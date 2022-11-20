@@ -18,10 +18,10 @@ jobs:
     - name: Install deps
       run: >-
           python -m pip install --upgrade pip &&
-          pip install beautifulsoup4
+          pip install beautifulsoup4 && pip install requests 
     - name: Fetch latest data
-      run: |-
-        curl https://www.amd.com/en/support > python clean.py > link.txt
+      run: >-
+          python clean.py > link.txt
     - name: Commit and push if it changed
       run: |-
         git config user.name "Automated"
