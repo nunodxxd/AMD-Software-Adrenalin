@@ -1,2 +1,2 @@
 # AMD-Catalyst
-Automated Repository -> Get installer link for AMD Catalyst installer every day.
+Automated Repository -> Get installer link for AMD Catalyst every day.
