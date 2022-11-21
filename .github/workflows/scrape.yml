@@ -61,7 +61,5 @@ jobs:
         git add -A
         timestamp=$(date -u)
         git commit -m "Latest data: ${timestamp}" || exit 0
-        git push origin main
         git tag ${{ env.tag_version }}
-        git push origin ${{ env.tag_version }}
-
+        git push --atomic origin main ${{ env.tag_version }} 
