@@ -30,6 +30,7 @@ jobs:
         python clean.py > link.txt
         echo "link=$(cat link.txt)" >> $GITHUB_ENV
     - name: Remove old installer
+      if: env.link != env.old_link 
       run: rm -rf ./driver
     - name: Save new installer
       if: env.link != env.old_link 
