@@ -1,17 +1,20 @@
-name: "tagged-release"
-
+name: Release
 on:
-  workflow_dispatch:
   push:
     tags:
-      - v*
-
+      - '*'
 jobs:
-  tagged-release:
-    name: "Tagged Release"
-    runs-on: "ubuntu-latest"
+  release:
+    runs-on: ubuntu-latest
     steps:
-      - uses: "marvinpinto/action-automatic-releases@latest"
+      - uses: actions/checkout@master
+      - name: Create Archive Release
+        uses: thedoctor0/zip-release@master
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          files: /driver/*
+          filename: 'AMD-Catalyst-driver.zip'
+          path: ./driver/
+      - name: Upload Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: 'AMD-Catalyst-driver.zip'
+          token: ${{ secrets.GITHUB_TOKEN }}
