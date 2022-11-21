@@ -25,11 +25,12 @@ jobs:
         sudo apt update
         sudo apt install curl -y        
     - name: Fetch latest data
-      run: >-
-          python clean.py > link.txt
+      run: |-
+        python clean.py > link.txt
+        echo "link=$(cat link.txt)" >> $GITHUB_ENV
     - name: Save installer
       run:  |-
-        curl --create-dirs -O --output-dir "driver" '$(cat link.txt)' \
+        curl --create-dirs -O --output-dir "driver" '${{ env.link }}' \
         -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9' \
         -H 'Accept-Language: pt-PT,pt;q=0.9,pt-BR;q=0.8,en;q=0.7,en-US;q=0.6,en-GB;q=0.5' \
         -H 'Connection: keep-alive' \
