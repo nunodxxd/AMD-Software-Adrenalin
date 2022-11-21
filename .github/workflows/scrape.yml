@@ -31,8 +31,7 @@ jobs:
         echo "link=$(cat link.txt)" >> $GITHUB_ENV
     - name: Extract new version
       #if: env.link != env.old_link 
-      run: |-
-        echo "tag_version=v${{ env.link }}" | grep -oP '(tag_version=v)|(\d\d\.\d\d?\.\d\d?)' >> $GITHUB_ENV
+      run: echo "tag_version=v${{ env.link }}" | grep -oP '(tag_version=v)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" >> $GITHUB_ENV
     - name: Remove old installer
       if: env.link != env.old_link 
       run: rm -rf ./driver
