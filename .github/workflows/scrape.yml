@@ -32,7 +32,7 @@ jobs:
     - name: Extract new version
       #if: env.link != env.old_link 
       run: |-
-        echo "amd_version=${{ env.link }} | grep -oP '(^amd_version=)|(\d\d\.\d\d?\.\d\d?)' | tr -d '\n'" >> $GITHUB_ENV
+        echo "amd_version=${{ env.link }}" | grep -oP '(^amd_version=)|(\d\d\.\d\d?\.\d\d?)' | tr -d '\n' >> $GITHUB_ENV
         echo ${{ env.tag_version }}
         echo "tag_version=v${{ env.amd_verion }}" >> $GITHUB_ENV
         echo ${{ env.tag_version }}
