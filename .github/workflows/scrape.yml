@@ -29,7 +29,12 @@ jobs:
         echo "old_link=$(cat link.txt)" >> $GITHUB_ENV
         python clean.py > link.txt
         echo "link=$(cat link.txt)" >> $GITHUB_ENV
-    - name: Save installer
+    - name: Remove old installer
+      if: env.link != env.old_link 
+      uses: JesseTG/rm@v1.0.0
+      with:
+        path: /driver
+    - name: Save new installer
       if: env.link != env.old_link 
       run:  |-
         curl --create-dirs -O --output-dir "driver" '${{ env.link }}' \
