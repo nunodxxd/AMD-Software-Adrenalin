@@ -23,7 +23,7 @@ jobs:
       run: >-
           python clean.py > link.txt
     - name: Save installer
-      run:  curl -O ./link.txt
+      run:  curl -O $(cat link.txt)
     - name: Commit and push if it changed
       run: |-
         git config user.name "Automated"
