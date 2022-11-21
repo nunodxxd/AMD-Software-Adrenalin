@@ -31,9 +31,10 @@ jobs:
         echo "link=$(cat link.txt)" >> $GITHUB_ENV
     - name: Extract new version
       #if: env.link != env.old_link 
-      env:
-        amd_verion: ${{ echo "${{ env.link }}" | grep -oP '(\d\d\.\d\d?\.\d\d?)' }}
-      run: echo "tag-version=v${{ env.amd_verion }}" >> $GITHUB_ENV
+      run: |-
+        echo "amd_version=echo "${{ env.link }}" | grep -oP '(\d\d\.\d\d?\.\d\d?)'" >> $GITHUB_ENV
+        echo "tag_version=v${{ env.amd_verion }}" >> $GITHUB_ENV
+        echo ${{ env.tag_version }}
     - name: Remove old installer
       if: env.link != env.old_link 
       run: rm -rf ./driver
@@ -63,5 +64,5 @@ jobs:
         git add -A
         timestamp=$(date -u)
         git commit -m "Latest data: ${timestamp}" || exit 0
-        git tag ${{ env.tag-version }}
+        git tag ${{ env.tag_version }}
         git push
