@@ -32,7 +32,7 @@ jobs:
     - name: Extract new version
       #if: env.link != env.old_link 
       run: |-
-        echo "tag_version=v${{ env.link }}" | grep -oP '(^amd_version=v)|(\d\d\.\d\d?\.\d\d?)' >> $GITHUB_ENV
+        echo "tag_version=v${{ env.link }}" | grep -oP '(tag_version=v)|(\d\d\.\d\d?\.\d\d?)' >> $GITHUB_ENV
     - name: Remove old installer
       if: env.link != env.old_link 
       run: rm -rf ./driver
