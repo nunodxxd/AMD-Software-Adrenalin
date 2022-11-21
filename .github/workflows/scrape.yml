@@ -33,6 +33,7 @@ jobs:
       #if: env.link != env.old_link 
       env:
         amd_verion: ${{ echo "$(echo "v")""$(echo "'${{ env.link }}'" | grep -oP '(\d\d\.\d\d?\.\d\d?)')" }}
+        run: echo "$(echo "v")""$(echo "'${{ env.link }}'" | grep -oP '(\d\d\.\d\d?\.\d\d?)')" 
     - name: Remove old installer
       if: env.link != env.old_link 
       run: rm -rf ./driver
