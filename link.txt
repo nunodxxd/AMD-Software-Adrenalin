@@ -1,1 +1,1 @@
-https://drivers.amd.com/drivers/installer/22.20/beta/amd-software-adrenalin-edition-22.11.1-minimalsetup-221110_web.exe
+https://drivers.amd.com/drivers/amd-software-adrenalin-edition-22.11.1-win10-win11-nov15.exe
