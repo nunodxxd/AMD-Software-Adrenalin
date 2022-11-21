@@ -18,7 +18,12 @@ jobs:
     - name: Install deps
       run: >-
           python -m pip install --upgrade pip &&
-          pip install beautifulsoup4 && pip install requests && sudo apt install curl
+          pip install beautifulsoup4 && pip install requests
+    - name: Update deps
+      run: |-
+        sudo add-apt-repository ppa:savoury1/curl34 -y
+        sudo apt update
+        sudo apt install curl -y        
     - name: Fetch latest data
       run: >-
           python clean.py > link.txt
