@@ -62,4 +62,4 @@ jobs:
         timestamp=$(date -u)
         git commit -m "Latest data: ${timestamp}" || exit 0
         git tag ${{ env.tag_version }}
-        git push
+        git push origin ${{ env.tag_version }}
