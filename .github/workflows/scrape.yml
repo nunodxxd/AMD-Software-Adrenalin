@@ -30,10 +30,9 @@ jobs:
         python clean.py > link.txt
         echo "link=$(cat link.txt)" >> $GITHUB_ENV
     - name: Remove old installer
-      if: env.link != env.old_link 
       uses: JesseTG/rm@v1.0.0
       with:
-        path: /Driver
+        path: ./Driver
     - name: Save new installer
       if: env.link != env.old_link 
       run:  |-
