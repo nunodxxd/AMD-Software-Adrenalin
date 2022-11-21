@@ -26,9 +26,11 @@ jobs:
         sudo apt install curl -y        
     - name: Fetch latest data
       run: |-
+        echo "old_link=$(cat link.txt)" >> $GITHUB_ENV
         python clean.py > link.txt
         echo "link=$(cat link.txt)" >> $GITHUB_ENV
     - name: Save installer
+      if: env.link == env.old_link 
       run:  |-
         curl --create-dirs -O --output-dir "driver" '${{ env.link }}' \
         -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9' \
