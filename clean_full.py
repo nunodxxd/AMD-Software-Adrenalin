@@ -7,6 +7,6 @@ html = requests.get('https://www.amd.com/en/support/kb/release-notes/rn-rad-win-
 
 soup = BeautifulSoup(html, 'html.parser')
 a = soup.select("a[href*='/drivers/whql']")
-link = a.get('href')
+link = a.get('href')[0]
 
 print(link)
