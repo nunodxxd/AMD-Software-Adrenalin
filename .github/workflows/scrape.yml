@@ -5,6 +5,9 @@ on:
   schedule:
     - cron:  '0 1 * * *'
 
+env:
+  GITHUB_TOKEN: ${{ secrets.PAT_AMD }}
+
 jobs:
   scheduled:
     runs-on: ubuntu-latest
@@ -54,7 +57,22 @@ jobs:
         -H 'sec-ch-ua-mobile: ?0' \
         -H 'sec-ch-ua-platform: "Windows"' \
         --compressed
-    - name: Commit and push if it changed
+#     - name: Commit and push if it changed
+#       run: |-
+#         git config user.name "Automated"
+#         git config user.email "actions@users.noreply.github.com"
+#         git add -A
+#         timestamp=$(date -u)
+#         git commit -m "Latest data: ${timestamp}" || exit 0
+#         git tag ${{ env.tag_version }}
+#         git push --atomic origin main ${{ env.tag_version }} 
+        
+    - uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.PAT_AMD }}
+    - name: Create report file
+      run: date +%s > report.txt
+    - name: Commit report
       run: |-
         git config user.name "Automated"
         git config user.email "actions@users.noreply.github.com"
