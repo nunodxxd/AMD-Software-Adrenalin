@@ -4,3 +4,5 @@ This repository is not official, but it provides the official drivers extracted 
 # Fully Automated Repo
 This repository is fully automated, it checks and updates the drivers folder daily if necessary.\
 Unfortunately it's based on web scraping and could end up broken if AMD's frontend changes, I'll try to support it until there's a better alternative.
+# Official Documentation
+[Get Drivers with AMD Auto-Detect and Install Tool](https://www.amd.com/en/support). 
