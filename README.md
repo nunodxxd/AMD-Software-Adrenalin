@@ -1,4 +1,4 @@
-# AMD-Catalyst for Windows 10/11
+# AMD Software: Adrenalin for Windows 10/11
 Driver Updates for AMD Radeon™ Series Graphics and Ryzen™ Chipsets.\
 This repository is not official, but it provides the official drivers extracted directly from the [AMD Drivers and Support](https://www.amd.com/en/support) website.
 # Fully Automated Repo
