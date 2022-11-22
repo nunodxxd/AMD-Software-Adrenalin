@@ -6,7 +6,7 @@ headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36
 html = requests.get('https://www.amd.com/en/support/kb/release-notes/rn-rad-win-'+sys.argv[1],headers=headers).content
 
 soup = BeautifulSoup(html, 'html.parser')
-a = soup.select('a[href*='/drivers/whql']')
+a = soup.select("a[href*='/drivers/whql']")
 link = a.get('href')
 
 print(link)
