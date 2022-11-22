@@ -16,6 +16,11 @@ jobs:
       uses: actions/checkout@v2
       with:
         token: ${{ secrets.PAT_AMD }}
+        lfs: true
+    - name: Checkout LFS objects
+      run: |-
+        git lfs install
+        git lfs track "*.exe"
     - name: Set up Python 3.9
       uses: actions/setup-python@v1
       with:
