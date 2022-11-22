@@ -10,7 +10,6 @@ jobs:
     permissions:
       contents: write
     steps:
-    - name: Upload Release
     - uses: actions/checkout@v2
     - uses: ncipollo/release-action@v1
       with:
