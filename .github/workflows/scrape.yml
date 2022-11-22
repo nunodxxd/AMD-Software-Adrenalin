@@ -34,11 +34,10 @@ jobs:
         echo "old_link=$(cat link.txt)" >> $GITHUB_ENV
         python clean.py > link.txt
         echo "link=$(cat link.txt)" >> $GITHUB_ENV
-    - name: Extract new version
+    - name: Get tag version
       if: env.link != env.old_link 
       run: |-
         echo "tag_version=v${{ env.link }}" | grep -oP '(tag_version=v)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" >> $GITHUB_ENV
-        echo "version=${{ env.link }}" | grep -oP '(tag_version=v)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" | tr  "."  "-" >> $GITHUB_ENV
     - name: Remove old driver folder
       if: env.link != env.old_link 
       run: rm -rf ./driver
@@ -61,6 +60,10 @@ jobs:
         -H 'sec-ch-ua-mobile: ?0' \
         -H 'sec-ch-ua-platform: "Windows"' \
         --compressed
+    - name: Prepare link for curl
+      if: env.link != env.old_link 
+      run: |-
+        echo "version=${{ env.link }}" | grep -oP '(tag_version=v)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" | tr  "."  "-" >> $GITHUB_ENV   
     - name: Fetch link for full setup
       if: env.link != env.old_link 
       run: |-
