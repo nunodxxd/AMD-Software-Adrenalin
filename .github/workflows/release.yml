@@ -7,9 +7,11 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - name: Upload Release
-        uses: ncipollo/release-action@v1
-        with:
-          artifacts: './driver/*.exe'
-          token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload Release
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: '/driver/*.exe'
+        token: ${{ secrets.GITHUB_TOKEN }}
