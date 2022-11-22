@@ -8,12 +8,6 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-#       - name: Create Archive Release
-#         uses: thedoctor0/zip-release@master
-#         with:
-#           filename: 'AMD-Catalyst-driver.zip'
-#           path: ./driver/
       - name: Upload Release
         uses: ncipollo/release-action@v1
         with:
