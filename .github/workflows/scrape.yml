@@ -29,21 +29,47 @@ jobs:
         sudo add-apt-repository ppa:savoury1/curl34 -y
         sudo apt update
         sudo apt install curl -y        
-    - name: Fetch latest data
+    - name: Fetch link for minimal setup
       run: |-
         echo "old_link=$(cat link.txt)" >> $GITHUB_ENV
         python clean.py > link.txt
         echo "link=$(cat link.txt)" >> $GITHUB_ENV
     - name: Extract new version
       if: env.link != env.old_link 
-      run: echo "tag_version=v${{ env.link }}" | grep -oP '(tag_version=v)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" >> $GITHUB_ENV
-    - name: Remove old installer
+      run: |-
+        echo "tag_version=v${{ env.link }}" | grep -oP '(tag_version=v)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" >> $GITHUB_ENV
+        echo "version=${{ env.link }}" | grep -oP '(tag_version=v)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" | tr  "."  "-" >> $GITHUB_ENV
+    - name: Remove old driver folder
       if: env.link != env.old_link 
       run: rm -rf ./driver
-    - name: Save new installer
+    - name: Save new minimal setup
       if: env.link != env.old_link 
       run:  |-
         curl --create-dirs -O --output-dir "driver" '${{ env.link }}' \
+        -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9' \
+        -H 'Accept-Language: pt-PT,pt;q=0.9,pt-BR;q=0.8,en;q=0.7,en-US;q=0.6,en-GB;q=0.5' \
+        -H 'Connection: keep-alive' \
+        -H 'DNT: 1' \
+        -H 'Referer: https://www.amd.com/' \
+        -H 'Sec-Fetch-Dest: document' \
+        -H 'Sec-Fetch-Mode: navigate' \
+        -H 'Sec-Fetch-Site: same-site' \
+        -H 'Sec-Fetch-User: ?1' \
+        -H 'Upgrade-Insecure-Requests: 1' \
+        -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52' \
+        -H 'sec-ch-ua: "Microsoft Edge";v="107", "Chromium";v="107", "Not=A?Brand";v="24"' \
+        -H 'sec-ch-ua-mobile: ?0' \
+        -H 'sec-ch-ua-platform: "Windows"' \
+        --compressed
+    - name: Fetch link for full setup
+      if: env.link != env.old_link 
+      run: |-
+        python clean_full.py ${{env.version}} > link_full.txt
+        echo "link_full=$(cat link_full.txt)" >> $GITHUB_ENV
+    - name: Save new full setup
+      if: env.link != env.old_link 
+      run:  |-
+        curl --create-dirs -O --output-dir "driver" '${{ env.link_full }}' \
         -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9' \
         -H 'Accept-Language: pt-PT,pt;q=0.9,pt-BR;q=0.8,en;q=0.7,en-US;q=0.6,en-GB;q=0.5' \
         -H 'Connection: keep-alive' \
