@@ -63,7 +63,7 @@ jobs:
     - name: Prepare link for curl
       if: env.link != env.old_link 
       run: |-
-        echo "version=${{ env.link }}" | grep -oP '(tag_version=v)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" | tr  "."  "-" >> $GITHUB_ENV   
+        echo "version=${{ env.link }}" | grep -oP '(version=)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" | tr  "."  "-" >> $GITHUB_ENV   
     - name: Fetch link for full setup
       if: env.link != env.old_link 
       run: |-
