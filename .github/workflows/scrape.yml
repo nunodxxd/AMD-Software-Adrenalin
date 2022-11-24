@@ -38,9 +38,6 @@ jobs:
       if: env.link != env.old_link 
       run: |-
         echo "tag_version=v${{ env.link }}" | grep -oP '(tag_version=v)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" >> $GITHUB_ENV
-    - name: Remove old driver folder
-      if: env.link != env.old_link 
-      run: rm -rf ./driver
     - name: Save new minimal setup
       if: env.link != env.old_link 
       run:  |-
@@ -93,7 +90,15 @@ jobs:
       run: |-
         gh release create ${{ env.tag_version }}
         gh release upload ${{ env.tag_version }} ./driver/*.exe
-        
-        
+    - name: Remove driver folder
+      if: env.link != env.old_link 
+      run: rm -rf ./driver    
+    - name: Commit report
+      run: |-
+        git config user.name "Automated"
+        git config user.email "actions@users.noreply.github.com"
+        git add -A
+        timestamp=$(date -u)
+        git commit -m "Latest data: ${timestamp}" || exit 0
         
 
