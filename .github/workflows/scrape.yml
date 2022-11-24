@@ -29,7 +29,6 @@ jobs:
         echo "old_link=$(cat link.txt)" >> $GITHUB_ENV
         python clean.py > link.txt
         echo "link=$(cat link.txt)" >> $GITHUB_ENV
-        echo "options=${cat curl_options.txt}" >> $GITHUB_ENV
     - name: Update curl
       if: env.link != env.old_link
       run: |-
@@ -43,7 +42,7 @@ jobs:
     - name: Save new minimal setup
       if: env.link != env.old_link 
       run:  |-
-        curl --create-dirs -O --output-dir "driver" '${{ env.link }}' '${{ env.options }}'
+        curl --create-dirs -O --output-dir "driver" '${{ env.link }}' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'  -H 'Accept-Language: pt-PT,pt;q=0.9,pt-BR;q=0.8,en;q=0.7,en-US;q=0.6,en-GB;q=0.5'  -H 'Connection: keep-alive'  -H 'DNT: 1'  -H 'Referer: https://www.amd.com/'  -H 'Sec-Fetch-Dest: document'  -H 'Sec-Fetch-Mode: navigate'  -H 'Sec-Fetch-Site: same-site'  -H 'Sec-Fetch-User: ?1'  -H 'Upgrade-Insecure-Requests: 1'  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52'  -H 'sec-ch-ua: "Microsoft Edge";v="107", "Chromium";v="107", "Not=A?Brand";v="24"'  -H 'sec-ch-ua-mobile: ?0'  -H 'sec-ch-ua-platform: "Windows"'  --compressed
     - name: Prepare link for curl
       if: env.link != env.old_link 
       run: |-
@@ -56,7 +55,7 @@ jobs:
     - name: Save new full setup
       if: env.link != env.old_link 
       run:  |-
-        curl --create-dirs -O --output-dir "driver" '${{ env.link_full }}' '${{ env.options }}'
+        curl --create-dirs -O --output-dir "driver" '${{ env.link_full }}' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'  -H 'Accept-Language: pt-PT,pt;q=0.9,pt-BR;q=0.8,en;q=0.7,en-US;q=0.6,en-GB;q=0.5'  -H 'Connection: keep-alive'  -H 'DNT: 1'  -H 'Referer: https://www.amd.com/'  -H 'Sec-Fetch-Dest: document'  -H 'Sec-Fetch-Mode: navigate'  -H 'Sec-Fetch-Site: same-site'  -H 'Sec-Fetch-User: ?1'  -H 'Upgrade-Insecure-Requests: 1'  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52'  -H 'sec-ch-ua: "Microsoft Edge";v="107", "Chromium";v="107", "Not=A?Brand";v="24"'  -H 'sec-ch-ua-mobile: ?0'  -H 'sec-ch-ua-platform: "Windows"'  --compressed
     - name: Create new Realease
       if: env.link != env.old_link 
       run: |-
