@@ -92,7 +92,7 @@ jobs:
       if: env.link != env.old_link 
       run: |-
         gh release create ${{ env.tag_version }}
-        gh release upload ${{ env.tag_version }} /driver/*.exe
+        gh release upload ${{ env.tag_version }} ./driver/*.exe
         
         
         
