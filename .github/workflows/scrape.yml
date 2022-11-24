@@ -43,7 +43,7 @@ jobs:
     - name: Save new minimal setup
       if: env.link != env.old_link 
       run:  |-
-        curl --create-dirs -O --output-dir "driver" '${{ env.link }}' '${{cat curl_options.txt}}'
+        curl --create-dirs -O --output-dir "driver" '${{ env.link }}' '${cat curl_options.txt}'
     - name: Prepare link for curl
       if: env.link != env.old_link 
       run: |-
