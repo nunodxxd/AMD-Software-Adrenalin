@@ -29,7 +29,7 @@ jobs:
         echo "old_link=$(cat link.txt)" >> $GITHUB_ENV
         python clean.py > link.txt
         echo "link=$(cat link.txt)" >> $GITHUB_ENV
-        echo '${cat curl_options.txt}'
+        echo ${cat curl_options.txt}
     - name: Update curl
       if: env.link != env.old_link
       run: |-
