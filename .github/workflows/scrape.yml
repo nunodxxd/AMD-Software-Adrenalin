@@ -63,7 +63,7 @@ jobs:
     - name: Create new Release 
       if: env.link != env.old_link 
       run: |-
-        gh release create ${{ env.tag_version }} -t ${{ env.tag_version }}
+        gh release create ${{ env.tag_version }} -t ${{ env.tag_version }} -F generate_changelog.md
         gh release upload ${{ env.tag_version }} ./driver/*.exe
     - name: Remove driver folder
       if: env.link != env.old_link 
