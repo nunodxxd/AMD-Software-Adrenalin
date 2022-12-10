@@ -18,4 +18,5 @@
 * During video playback and gameplay, frame drop may occur in chromium-based browsers with variable refresh rate enabled extended displays.
 * Brief display corruption may occur when switching between video and game windows on some AMD Graphics Products such as the Radeon™ RX 6700 XT.
 * Texture flickering or artifacts may occur during Warhammer 40,000: Darktide™ gameplay.
+* Some laptops using hybrid graphics and AMD Ryzen™ 5000 series Processors with Radeon™ Graphics may have no sound output using certain Realtek Audio versions.
 
