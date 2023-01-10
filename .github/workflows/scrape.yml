@@ -36,13 +36,15 @@ jobs:
         sudo add-apt-repository ppa:savoury1/curl34 -y
         sudo apt update
         sudo apt install curl -y        
-    - name: set new tag with new link
+    - name: create new tag based on link scraped
       if: env.link != env.old_link 
       run: |-
         echo "tag=${{ env.link }}" | grep -oP '(tag=)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" >> $GITHUB_ENV
-    - name: Extract version from tag
+    - name: Extract version from latest tag on repo
+      if: env.link != env.old_link 
       uses: damienaicheh/extract-version-from-tag-action@v1.0.0
     - name: Create lastest:tag
+      if: env.link != env.old_link 
       run: echo "latest_tag=${{env.MAJOR}}.${{env.MINOR}}.${{env.PATCH}}" >> $GITHUB_ENV
     - name: Prepare link for curl
       if: env.link != env.old_link && env.tag != env.latest_tag
