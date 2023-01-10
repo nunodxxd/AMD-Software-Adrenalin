@@ -42,6 +42,39 @@ jobs:
         echo "tag=${{ env.link }}" | grep -oP '(tag=)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" >> $GITHUB_ENV
     - name: Extract version from tag
       uses: damienaicheh/extract-version-from-tag-action@v1.0.0
-    - name: echo
-      run: echo $PATCH
+    - name: Create lastest:tag
+      run: echo "latest_tag=${{env.MAJOR}}.${{env.MINOR}}.${{env.PATCH}}" >> $GITHUB_ENV
+    - name: Prepare link for curl
+      if: env.link != env.old_link && env.tag != env.latest_tag
+      run: |-
+        echo "version=${{ env.link }}" | grep -oP '(version=)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" | tr  "."  "-" >> $GITHUB_ENV   
+    - name: Fetch link for full setup
+      if: env.link != env.old_link && env.tag != env.latest_tag
+      run: |-
+        python clean_full.py ${{env.version}} > link_full.txt
+        echo "link_full=$(cat link_full.txt)" >> $GITHUB_ENV
+    - name: Save new full setup
+      if: env.link != env.old_link && env.tag != env.latest_tag
+      run:  |-
+        curl --create-dirs -O --output-dir "driver" '${{ env.link_full }}' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'  -H 'Accept-Language: pt-PT,pt;q=0.9,pt-BR;q=0.8,en;q=0.7,en-US;q=0.6,en-GB;q=0.5'  -H 'Connection: keep-alive'  -H 'DNT: 1'  -H 'Referer: https://www.amd.com/'  -H 'Sec-Fetch-Dest: document'  -H 'Sec-Fetch-Mode: navigate'  -H 'Sec-Fetch-Site: same-site'  -H 'Sec-Fetch-User: ?1'  -H 'Upgrade-Insecure-Requests: 1'  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52'  -H 'sec-ch-ua: "Microsoft Edge";v="107", "Chromium";v="107", "Not=A?Brand";v="24"'  -H 'sec-ch-ua-mobile: ?0'  -H 'sec-ch-ua-platform: "Windows"'  --compressed
+    - name: Generate new changelog
+      if: env.link != env.old_link && env.tag != env.latest_tag
+      run: |-
+        python generate_changelog.py ${{env.version}} > generate_changelog.md
+    - name: Create new Release 
+      if: env.link != env.old_link && env.tag != env.latest_tag
+      run: |-
+        gh release create ${{ env.tag }} -t ${{ env.tag }} -F generate_changelog.md
+        gh release upload ${{ env.tag }} ./driver/*.exe
+    - name: Remove driver folder
+      if: env.link != env.old_link && env.tag != env.latest_tag
+      run: rm -rf ./driver    
+    - name: Commit report
+      run: |-
+        git config user.name "Automated"
+        git config user.email "actions@users.noreply.github.com"
+        git add -A
+        timestamp=$(date -u)
+        git commit -m "Latest data: ${timestamp}" || exit 0
+        git push origin main
   
