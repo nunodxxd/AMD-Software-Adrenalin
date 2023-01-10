@@ -44,8 +44,4 @@ jobs:
       uses: damienaicheh/extract-version-from-tag-action@v1.0.0
     - name: echo
       run: echo $PATCH
-    - name: Prepare link for curl
-      if: env.link != env.old_link && env.tag != $PATCH
-      run: |-
-        echo "version=${{ env.link }}" | grep -oP '(version=)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" | tr  "."  "-" >> $GITHUB_ENV   
   
