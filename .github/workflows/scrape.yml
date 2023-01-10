@@ -35,7 +35,7 @@ jobs:
         sudo add-apt-repository ppa:savoury1/curl34 -y
         sudo apt update
         sudo apt install curl -y        
-    - name: set new tag based on link
+    - name: set new tag with new link
       if: env.link != env.old_link 
       run: |-
         echo "tag=${{ env.link }}" | grep -oP '(tag=)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" >> $GITHUB_ENV
