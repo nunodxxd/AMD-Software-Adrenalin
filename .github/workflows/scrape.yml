@@ -41,7 +41,7 @@ jobs:
         echo "tag=${{ env.link }}" | grep -oP '(tag=)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" >> $GITHUB_ENV
     - name: get latest tag on repo
       if: env.link != env.old_link
-      run: echo "latest_tag=$(git describe --tags --abbrev=0)" >> $GITHUB_ENV
+      run: echo "latest_tag=$(git tag --sort=refname --merged=HEAD | tail -1)" >> $GITHUB_ENV
     - name: Save new minimal setup
       if: env.link != env.old_link && env.tag != env.latest_tag
       run:  |-
