@@ -70,6 +70,7 @@ jobs:
       if: env.link != env.old_link && env.tag != env.latest_tag
       run: rm -rf ./driver    
     - name: Commit report
+      if: env.link != env.old_link && env.tag != env.latest_tag
       run: |-
         git config user.name "Automated"
         git config user.email "actions@users.noreply.github.com"
