@@ -40,7 +40,7 @@ jobs:
       run: |-
         echo "new_tag=${{ env.link }}" | grep -oP '(new_tag=)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" >> $GITHUB_ENV
     - name: get latest tag on repo
-    - uses: actions/checkout@v3
+      uses: actions/checkout@v3
       with:
         fetch-depth: 0 # Required due to the way Git works, without it this action won't be able to find any or the correct tags
     - name: 'Get Previous tag'
