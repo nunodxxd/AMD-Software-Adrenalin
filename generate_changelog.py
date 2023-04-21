@@ -17,6 +17,8 @@ for x in range(1,7):
 #hash generator
 exe_files = [f for f in os.listdir('./driver') if f.endswith('.exe')]
 
+selected_html += '<h2>SHA256 checksum:</h2> <ul>' 
+
 for file in exe_files:
     path_to_file = f'./driver/{file}'
     hasher = hashlib.sha256()
@@ -25,7 +27,9 @@ for file in exe_files:
             hasher.update(chunk)
     hash_value = hasher.hexdigest()
     
-    selected_html += f'<p>Hash SHA256 from {file}: {hash_value}</p>'
+    selected_html += f'<li>{file}: {hash_value}</li>'
+
+selected_html += '</ul>'
 
 #export markdown
 markdown = markdownify.markdownify(selected_html, heading_style="ATX")
