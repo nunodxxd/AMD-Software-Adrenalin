@@ -25,7 +25,7 @@ for file in exe_files:
             hasher.update(chunk)
     hash_value = hasher.hexdigest()
     
-    selected_html += f'<p>O hash SHA256 do arquivo {file} é: {hash_value}</p>'
+    selected_html += f'<p>Hash SHA256 from {file}: {hash_value}</p>'
 
 #export markdown
 markdown = markdownify.markdownify(selected_html, heading_style="ATX")
