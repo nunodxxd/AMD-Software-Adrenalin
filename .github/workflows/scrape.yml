@@ -52,7 +52,7 @@ jobs:
     - name: Save new full setup
       if: env.link != env.old_link && env.tag != env.latest_tag
       run:  |-
-        curl --create-dirs -O --output-dir "driver" '${{ env.link_full }}' -K headers.txt --compressed
+        curl --create-dirs -O --output-dir "driver" '${{ env.link_full }}' -K configs/headers.txt --compressed
     - name: Check if full setup exists 
       run: |
         if [ "$(ls -A ./driver/*.exe)" ]; then
