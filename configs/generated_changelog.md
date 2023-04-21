@@ -22,3 +22,6 @@
 * Brief display corruption may occur when switching between video and game windows on some AMD Graphics Products, such as the Radeon™ RX 6700 XT.
 * Water corruption in Hogwarts Legacy™ may occur on some AMD Graphics Products, such as the Radeon™ RX 580.
 
+Hash SHA256 from whql-amd-software-adrenalin-edition-23.4.2-win10-win11-apr20.exe: cc2ae8b4bf226deeea1455d3031f2b6b9a75d695561a3da35777ce1d07f35f15
+
+
