@@ -53,15 +53,27 @@ jobs:
       if: env.link != env.old_link && env.tag != env.latest_tag
       run:  |-
         curl --create-dirs -O --output-dir "driver" '${{ env.link_full }}' -K headers.txt --compressed
+    - name: Check if full setup exists 
+      run: |
+        if [ "$(ls -A ./driver/*.exe)" ]; then
+          echo "O arquivo existe."
+        else
+          echo "O arquivo não existe."
+          exit 1
+        fi
     - name: Generate new changelog
       if: env.link != env.old_link && env.tag != env.latest_tag
       run: |-
         python generate_changelog.py ${{env.version}} > configs/generated_changelog.md
+      if: ${{ failure() }}
+        continue-on-error: true
     - name: Create new Release 
       if: env.link != env.old_link && env.tag != env.latest_tag
       run: |-
         gh release create ${{ env.tag }} -t ${{ env.tag }} -F configs/generated_changelog.md
         gh release upload ${{ env.tag }} ./driver/*.exe
+      if: ${{ failure() }}
+        continue-on-error: true
     - name: Remove driver folder
       if: env.link != env.old_link && env.tag != env.latest_tag
       run: rm -rf ./driver    
