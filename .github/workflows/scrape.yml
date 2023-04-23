@@ -49,6 +49,10 @@ jobs:
       run: |-
         python clean_full.py ${{env.version}} > configs/link_full.txt
         echo "link_full=$(cat configs/link_full.txt)" >> $GITHUB_ENV
+    - name: Save new minimal setup
+      if: env.link != env.old_link && env.tag != env.latest_tag
+      run:  |-
+        curl --create-dirs -O --output-dir "driver" '${{ env.link }}' -K configs/headers.txt --compressed
     - name: Save new full setup
       if: env.link != env.old_link && env.tag != env.latest_tag
       run:  |-

@@ -6,7 +6,7 @@ html = requests.get('https://www.amd.com/en/support/graphics/amd-radeon-5700-ser
 
 soup = BeautifulSoup(html, 'html.parser')
 #a = soup.select('#buttons > div > a')[0]
-a = soup.select('#amd_support_driver_list > div > div > div > details > div > div > div > span > div > div > div > a')[0]
+a = soup.select('#amd_support_driver_list > div > div > div > details > div > div > div > span > div > div > div > a')[2]
 link = a.get('href')
 
 print(link)
