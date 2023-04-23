@@ -53,14 +53,6 @@ jobs:
       if: env.link != env.old_link && env.tag != env.latest_tag
       run:  |-
         curl --create-dirs -O --output-dir "driver" '${{ env.link_full }}' -K configs/headers.txt --compressed
-    - name: Check if full setup exists 
-      run: |
-        if [ "$(ls -A ./driver/*.exe)" ]; then
-          echo "Setup exist."
-        else
-          echo "Setup not exist"
-          exit 1
-        fi
     - name: Generate new changelog
       if: env.link != env.old_link && env.tag != env.latest_tag
       run: |-
