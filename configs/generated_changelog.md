@@ -25,4 +25,5 @@
 ## SHA256 checksum:
 
  * whql-amd-software-adrenalin-edition-23.4.2-win10-win11-apr20.exe: cc2ae8b4bf226deeea1455d3031f2b6b9a75d695561a3da35777ce1d07f35f15
+* amd-software-adrenalin-edition-23.4.2-minimalsetup-230420\_web.exe: 1ec59ef63598c4abdf34c07b34e66c137bceb6324fc1e99ac18fbe2a670e978c
 
