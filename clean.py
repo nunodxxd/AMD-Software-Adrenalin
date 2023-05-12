@@ -7,16 +7,21 @@ html = requests.get('https://www.amd.com/en/support/graphics/amd-radeon-5700-ser
 # old method 
 # a = soup.select('#amd_support_driver_list > div > div > div > details > div > div > div > span > div > div > div > a')[2]
 # link = a.get('href')
+# print(link)
 
 soup = BeautifulSoup(html, 'html.parser')
-divs = soup.find_all('div', class_='field__item', text='Auto-Detect and Install')
+divs = soup.find_all('div', class_='field__item')
 
-if divs:
-    link_div = divs[0].find_next('div', class_='field--type-uri')
-    link = link_div.find('a')['href']
+link = None
+for div in divs:
+    if div.text.strip() == 'Auto-Detect and Install':
+        link_div = div.find_next('div', class_='field--type-uri')
+        link = link_div.find('a')['href']
+        break
+
+if link:
     print(link)
 else:
-    print("Div não encontrada")
+    print("Link não encontrado")
 
 
-print(link)
