@@ -1,26 +1,24 @@
 ## Highlights
 
 * Support for:
-	+ The Lord of the Rings: Gollum™
-		- Up to 16% increase in performance in The Lord of the Rings: Gollum™ @ 4k, using AMD Software: Adrenalin Edition™ 23.5.1 on the Radeon™️ RX 7900 Series GPUs, versus the previous software driver version 23.4.3 RS-577
-		- Up to 12% increase in performance in The Lord of the Rings: Gollum™ @ 4k, using AMD Software: Adrenalin Edition™ 23.5.1 on the Radeon™️ RX 6000 Series GPUs, versus the previous software driver version 23.4.3 RS-578
-
-## Fixed Issues
-
-* Application crash or driver timeout may be observed during video playback using DaVinci Resolve™ Studio.
-* Brief display corruption may occur when switching between video and game windows on some AMD Graphics Products, such as the Radeon™ RX 6700 XT.
-* Higher than expected memory usage during shader compilation time when first launching THE LAST OF US™ Part I.
-* Intermittent system crash while playing Call of Duty®: Modern Warfare® II on some AMD Graphics Products, such as the Radeon™ RX 580.
+	+ Diablo® IV
+* Performance optimizations for Microsoft Olive DirectML pipeline for Stable Diffusion 1.5 on AMD Radeon RX 7900 series graphics
+	+ Boost your performance by an average of 2x in Microsoft Olive Optimized DirectML Stable Diffusion 1.5 using AMD Software: Adrenalin Edition™ 23.5.2 on the AMD Radeon™️ RX 7900 XTX graphics card, versus the previous software driver version 23.5.1. RS-579
 
 ## Known Issues
 
 * High idle power has situationally been observed when using select high-resolution and high refresh rate displays on Radeon™ RX 7000 series GPUs.
-* Video stuttering or performance drops may be observed during gameplay and video playback with some extended display configurations on Radeon™ RX 7000 series GPUs.
-* Some virtual reality games or applications may experience lower-than-expected performance on Radeon™ RX 7000 series GPUs.
+* Certain virtual reality games or applications may encounter suboptimal performance or occasional stuttering on Radeon™ RX 7000 series GPUs.
 * Application crash may be intermittently observed while playing RuneScape™ on some AMD Graphics Products, such as the Radeon™ RX 5700 XT.
+* Application crash or driver timeout may be observed during playback of AV1 video content using DaVinci Resolve™ Studio.
+* Intermittent corruption may be observed after switching windows while play Nioh 2™ on some AMD Graphics Products, such as the Radeon™ RX 6800 XT.
+
+## Important Notes
+
+* Factory Reset has been temporarily disabled as a precautionary measure while we address isolated installation issues that have been reported during PC upgrades. Users may use AMD Cleanup Utility as a temporary option.
 
 ## SHA256 checksum:
 
- * whql-amd-software-adrenalin-edition-23.5.1-win10-win11-may24.exe: 31284bd072442770c6476dcdf049a71d5cc0012b1f4c21befa5c8121a68d17a9
-* amd-software-adrenalin-edition-23.5.1-minimalsetup-230523\_web.exe: 5fb267bd74aaa07b4d5541f0399d79e9526460a8f67b0809db142af5132b35c0
+ * amd-software-adrenalin-edition-23.5.2-minimalsetup-230531\_web.exe: b0612426e2171cbd369cdc3d56ae069e4b991120d85892db1958529c97967135
+* whql-amd-software-adrenalin-edition-23.5.2-win10-win11-may31.exe: 63ac69b27b071bb8b8babbb57bfa0d72df3b35e4ef3e24563ddcb305186e7d1e
 
