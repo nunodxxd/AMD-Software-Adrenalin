@@ -1,24 +1,27 @@
 ## Highlights
 
-* Support for:
-	+ Diablo® IV
-* Performance optimizations for Microsoft Olive DirectML pipeline for Stable Diffusion 1.5 on AMD Radeon RX 7900 series graphics
-	+ Boost your performance by an average of 2x in Microsoft Olive Optimized DirectML Stable Diffusion 1.5 using AMD Software: Adrenalin Edition™ 23.5.2 on the AMD Radeon™️ RX 7900 XTX graphics card, versus the previous software driver version 23.5.1. RS-579
+* Support for additional Vulkan® extensions.
+	+ Click [here](https://www.amd.com/en/support/kb/release-notes/rn-rad-win-vulkan) for more information.
+
+## Fixed Issues
+
+* Certain virtual reality games or applications may encounter suboptimal performance or occasional stuttering on Radeon™ RX 7000 series GPUs.
+* Application crash or driver timeout may be observed during playback of AV1 video content using DaVinci Resolve™ Studio.
+* Improvements to high idle power when using select 4k@144Hz FreeSync enabled displays or multimonitor display configurations (such as 4k@144HZ or 4k@120Hz + 1440p@60Hz display) using on Radeon™ RX 7000 series GPUs.
+* Intermittent corruption may be observed playing WWE 2K23™ on some AMD Graphics Products, such as the Radeon™ RX 7900 XTX.
+* Intermittent corruption may be observed after switching windows while playing Nioh 2™ on some AMD Graphics Products, such as the Radeon™ RX 6800 XT.
 
 ## Known Issues
 
-* High idle power has situationally been observed when using select high-resolution and high refresh rate displays on Radeon™ RX 7000 series GPUs.
-* Certain virtual reality games or applications may encounter suboptimal performance or occasional stuttering on Radeon™ RX 7000 series GPUs.
 * Application crash may be intermittently observed while playing RuneScape™ on some AMD Graphics Products, such as the Radeon™ RX 5700 XT.
-* Application crash or driver timeout may be observed during playback of AV1 video content using DaVinci Resolve™ Studio.
-* Intermittent corruption may be observed after switching windows while play Nioh 2™ on some AMD Graphics Products, such as the Radeon™ RX 6800 XT.
-
-## Important Notes
-
-* Factory Reset has been temporarily disabled as a precautionary measure while we address isolated installation issues that have been reported during PC upgrades. Users may use AMD Cleanup Utility as a temporary option.
+* Intermittent corruption may be observed around some player models while playing Hatsune Miku: Project DIVA Mega Mix+™ on some AMD Graphics Products, such as the Radeon™ RX 6900 XT.
+* Stuttering may be observed while playing Call of Duty®: Modern Warfare® II with Radeon™ Anti-Lag enabled. As a temporary solution, users encountering this are recommended to disable the Anti-Lag in the per-game settings.
+* Performance Metrics Overlay may report N/A for FPS on various games.
+* Display signal may be lost after switching windows on certain Adaptive-Sync enable displays on some AMD Graphics Products, such as the Radeon™ RX 7900 XTX.
+* Higher than expected GPU Memory Utilization when using certain Record and Stream settings such as Instant Replay.
 
 ## SHA256 checksum:
 
- * amd-software-adrenalin-edition-23.5.2-minimalsetup-230531\_web.exe: b0612426e2171cbd369cdc3d56ae069e4b991120d85892db1958529c97967135
-* whql-amd-software-adrenalin-edition-23.5.2-win10-win11-may31.exe: 63ac69b27b071bb8b8babbb57bfa0d72df3b35e4ef3e24563ddcb305186e7d1e
+ * amd-software-adrenalin-edition-23.7.1-minimalsetup-230706\_web.exe: a4cfa908e5eee344ab06d545f4dc7139a9fde8179be5840f8d9358ce1d4f9438
+* whql-amd-software-adrenalin-edition-23.7.1-win10-win11-july6.exe: 8d9c54320a7a7d791f7be73d98cee7c9a4c70b553cc7e945803e61bec388168f
 
