@@ -1,27 +1,26 @@
+## Highlights
+
+* Support for
+	+ Immortals of Aveum™
+
 ## Fixed Issues
 
-* Stuttering may be observed while playing Call of Duty®: Modern Warfare® II with Radeon™ Anti-Lag enabled.
-* Intermittent corruption may be observed around some player models while playing Hatsune Miku: Project DIVA Mega Mix+™ on some AMD Graphics Products, such as the Radeon™ RX 6900 XT.
-* Higher than expected GPU Memory Utilization when using certain Record and Stream settings such as Instant Replay.
-* Display signal may be lost after switching windows on certain Adaptive-Sync enable displays on some AMD Graphics Products, such as the Radeon™ RX 7900 XTX.
-* Audio may intermittently become out of sync with video when recording from AMD Software: Adrenalin Edition with AVC and HEVC codecs.
+* Improvements to high idle power when using select multi-display setups with mixed high-resolution and high refresh rate displays on Radeon™ RX 7000 series GPUs with variable refresh rate enabled. Further optimizations are being investigated to improve idle power on additional display configurations.
+* Performance drop may be experienced for DirectX® 11 games on AMD Radeon™ RX 5600 XT when AMD SmartAccess Memory is Enabled.
+* Application crash or driver timeout may be observed while playing Ratchet & Clank™: Rift Apart with Ray-Tracing and Dynamic Resolution Scaling enabled on some AMD Graphics Products, such as the Radeon™ RX 7900 XTX.
+* Application crash or driver timeout may be observed while playing Starcraft II™ on Radeon™ RX 7000 series GPUs.
+* Intermittent corruption may be observed playing Rocket League™ with Bloom set to Off on some AMD Graphics Products, such as the Radeon™ RX 6900 XT.
+* Performance drop may be experienced for various games on AMD Ryzen™ processors with Radeon™ 700M series GPUS.
 
 ## Known Issues
 
 * Performance Metrics Overlay may report N/A for FPS on various games.
-* High idle power has situationally been observed when using select multi-display setups with mixed high-resolution and high refresh rate displays on Radeon™ RX 7000 series GPUs.
-* Intermittent corruption may be observed playing Rocket League™ with Bloom set to Off on some AMD Graphics Products, such as the Radeon™ RX 6900 XT.
-* Intermittent application hang for a few seconds may be observed while playing RuneScape™ on some AMD Graphics Products, such as the Radeon™ RX 5700 XT.
-* Application crash or driver timeout may be observed while playing Ratchet & Clank™: Rift Apart with Ray-Tracing and Dynamic Resolution Scaling enabled on some AMD Graphics Products, such as the Radeon™ RX 7900 XTX.
 * Audio may intermittently become out of sync with video when recording from AMD Software: Adrenalin Edition with AV1 codec.
-
-## Important Notes
-
-* Factory Reset has been temporarily disabled as a precautionary measure while we address isolated installation issues that have been reported during PC upgrades. Users may use AMD Cleanup Utility as a temporary option.
-* AMD is working with the game developers of Ratchet & Clank™: Rift Apart to resolve some stability issues when Ray-Tracing is enabled.
+* Display may not reach correct brightness with certain games on some SAMSUNG™ FreeSync Premium Pro displays and TVs when local dimming is enabled.
+* Application crash or driver timeout may be observed while playing Baldur's Gate 3 with DirectX® 11 API set on certain systems with Radeon™ RX 7000 series GPUs.
 
 ## SHA256 checksum:
 
- * amd-software-adrenalin-edition-23.7.2-minimalsetup-230725\_web.exe: d5c1b0c385a5b7570f47416036c184759a5a053fd9bb70d43e583672d39ba7ca
-* whql-amd-software-adrenalin-edition-23.7.2-win10-win11-july25.exe: dd83240bb8fdaac25d152d19040f3f2f03adaa43b21928d8ab79dca74e53796a
+ * whql-amd-software-adrenalin-edition-23.8.1-win10-win11-aug21.exe: 8da554d87863b6b238b9b929eee1a56748fac95859fb51855b5df30d15524c44
+* amd-software-adrenalin-edition-23.8.1-minimalsetup-230819\_web.exe: 92cb4865cfe7e2c7589d63b0332d35f904cb70a56eae56613a70daa458368fb4
 
