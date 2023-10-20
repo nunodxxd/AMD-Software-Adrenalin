@@ -1,1 +1,1 @@
-https://drivers.amd.com/drivers/installer/23.20/whql/amd-software-adrenalin-edition-23.10.1-combined-minimalsetup-231010_web.exe
+https://drivers.amd.com/drivers/installer/23.20/whql/amd-software-adrenalin-edition-23.10.2-minimalsetup-231019_web.exe
