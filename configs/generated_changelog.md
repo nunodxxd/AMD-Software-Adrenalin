@@ -1,26 +1,33 @@
-AMD has received reports of some games triggering anti-cheat bans on gamers when AMD Anti-Lag+ technology is enabled on Radeon graphics. To address this, we have released the AMD Software: Adrenalin Edition 23.10.2 driver that disables Anti-Lag+ technology in all supported games, and we recommend gamers use the new driver. AMD is actively working with game developers on a solution to re-enable Anti-Lag+ and support them in reinstating gamers who were impacted by the anti-cheat bans. We will provide more information when available.
-
 ## New Feature Highlights
 
 * **New Game Support**
-	+ Assassin's Creed Mirage
-	+ The Lords of the Fallen
-	+ Forza Motorsport
+	+ Call of Duty®: Modern Warfare® III
+	+ Like a Dragon Gaiden: The Man Who Erased His Name
+	+ The Invincible
+	+ JX3 Ultimate
+* **New Radeon™ Boost Support**
+
+
+	+ Alan Wake 2
+	+ For more information on Radeon™ Boost click [HERE](https://www.amd.com/en/technologies/radeon-boost).
+* **AI and Machine Learning**
+
+
+	+ DirectML improvements and optimizations for Stable Diffusion, Adobe Lightroom, DaVinci Resolve, UL Procyon AI workloads on AMD Radeon RX 600M, 700M, 6000, and 7000 series graphics.
 
 ## Fixed Issues
 
-* Intermittent app crash while playing Starfield on Radeon™ RX 7000 Series Graphics Products.
-* Intermittent driver crash while playing Counter Strike 2 with MSAA or FSR enabled on some AMD Graphics Products, such as the Radeon™ RX 7900 XTX.
-* Improvements to stutter experienced while playing Counter Strike 2.
-* EA SPORTS FC™ 24 may fail to open on some AMD Graphics Products, such as the Radeon™ RX 7800 XT.
-* System freeze or black screen when playing video files on Radeon™ RX 6000 Series Graphics Products.
-* The display may intermittently freeze after changing the encode format while streaming select games with AMD Link.
-* Intermittent app crash in Call of Duty®: Modern Warfare® II when Radeon Anti-Lag is enabled.
-
-## Known Issues
+* Performance Metrics Overlay may report N/A for FPS on various games.
+* Lower than expected performance in Counter Stike 2 on some AMD Graphics Products, such as the Radeon™ RX 7600.
+* Intermittent flickering may be observed in Total War: Pharaoh’s menus after changing graphics settings.
+* Intermittent flicker may be observed on some textures while playing Alan Wake 2.
+* Rebuilding shader cache may be incorrectly required when relaunching Baldur’s Gate 3 using Vulkan® API.
+* Rebuilding shader cache may be incorrectly required when relaunching Forza Motorsport.
+* Intermittent driver crash while viewing the credits screen after finishing a race in Forza Motorsport.
+* Intermittent black screen or code 31 error in device manager after reboot on some AMD Graphics Products, such as the Radeon™ RX 6700 XT.
 
 ## SHA256 checksum:
 
- * amd-software-adrenalin-edition-23.10.2-minimalsetup-231019\_web.exe: 8de586734142bace62d6e589d12cc5c5f9237e7f4d847e6df3bcae05d0cd8c2b
-* whql-amd-software-adrenalin-edition-23.10.2-win10-win11-oct19-rdna.exe: fcbe01d210602a6b21d7ba0cb615cc10af9d6b77797a856785c0ad9e8fd04160
+ * whql-amd-software-adrenalin-edition-23.11.1-win10-win11-nov3-rdna.exe: 90dd57cedd68fbc3ef272a1228709514973185f3f0ed516c10c835bfe3f2a000
+* amd-software-adrenalin-edition-23.11.1-minimalsetup-231102\_web.exe: 493fda53120050f85836032324409be6c6484f90a0755ae0c6a673ba7626818b
 
