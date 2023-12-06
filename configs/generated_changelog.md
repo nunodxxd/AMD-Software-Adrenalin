@@ -1,33 +1,40 @@
 ## New Feature Highlights
 
 * **New Game Support**
-	+ Call of Duty®: Modern Warfare® III
-	+ Like a Dragon Gaiden: The Man Who Erased His Name
-	+ The Invincible
-	+ JX3 Ultimate
-* **New Radeon™ Boost Support**
-
-
-	+ Alan Wake 2
-	+ For more information on Radeon™ Boost click [HERE](https://www.amd.com/en/technologies/radeon-boost).
-* **AI and Machine Learning**
-
-
-	+ DirectML improvements and optimizations for Stable Diffusion, Adobe Lightroom, DaVinci Resolve, UL Procyon AI workloads on AMD Radeon RX 600M, 700M, 6000, and 7000 series graphics.
+	+ Avatar: Frontiers of Pandora
+* **NEW AMD Software UI Redesign** –The Home and Gaming tab have undergone a UI redesign in this latest update of AMD Software: Adrenalin Edition.
+	+ HYPR-RX profiles can now be enabled easily on a global basis, or per-game on the Home Tab; additionally, games on the Home tab now will display key art for a more vibrant experience
+	+ When users go to the Graphics section within the Gaming tab, they will be able to learn more about specific features in each HYPR-RX profile by clicking on individual features to display a content block that contains more information about what benefits each feature enables
+	+ Now when you view your performance metrics in AMD Software, you can choose to customize elements such as the background or text colours, default enabled metrics through profiles, as well as select options such as showing the metrics overlay only while a game is open.
+* **Introducing: AMD HYPR-RX Eco** – designed with power savings in mind, when HYPR-RX Eco is enabled, AMD Software will enable a suite of features for gamers to experience power savings with one click
+	+ HYPR-RX Eco will launch initially with support for Radeon™️ 7000 Series graphics support and RDNA™️ 3 platforms
+* **Expanded OpenGL Interop Support** - AMD Software: Adrenalin Edition 23.12.1 expands support for FRTC, Radeon™ Super Resolution, Overlay, Record and Stream features to OpenGL games.
+* **Additional OS Feature Support**
+	+ Support for Hardware Accelerated GPU Scheduling for Radeon RX 7900/7800/7700 series GPUs. Click [HERE](https://devblogs.microsoft.com/directx/hardware-accelerated-gpu-scheduling/) for more information.
+* **Additional SDK Support**
+	+ Additional Vulkan® extensions. Click [HERE](https://www.amd.com/en/support/kb/release-notes/rn-rad-win-vulkan) for more information.
+* **AI and Machine Learning** 
+	+ DirectML improvements and optimizations for Topaz AI and DaVinci Resolve on AMD Radeon RX 600M, 700M, 6000, and 7000 series graphics.
 
 ## Fixed Issues
 
-* Performance Metrics Overlay may report N/A for FPS on various games.
-* Lower than expected performance in Counter Stike 2 on some AMD Graphics Products, such as the Radeon™ RX 7600.
-* Intermittent flickering may be observed in Total War: Pharaoh’s menus after changing graphics settings.
-* Intermittent flicker may be observed on some textures while playing Alan Wake 2.
-* Rebuilding shader cache may be incorrectly required when relaunching Baldur’s Gate 3 using Vulkan® API.
-* Rebuilding shader cache may be incorrectly required when relaunching Forza Motorsport.
-* Intermittent driver crash while viewing the credits screen after finishing a race in Forza Motorsport.
-* Intermittent black screen or code 31 error in device manager after reboot on some AMD Graphics Products, such as the Radeon™ RX 6700 XT.
+* Improvements to high idle power when using select dual monitor display setups with mixed resolutions and high refresh rate displays (such as 1440p @ 120/144Hz + 1080p @ 120/144Hz or 2160p @ 120/144Hz + 1080p @ 120/144Hz) on Radeon™ RX 7000 series GPUs.
+* Intermittent micro-stuttering may be experienced when running Chromium-based browsers on systems that pair a Radeon™ RX 7000 series GPU with a secondary display connected to an AMD Ryzen™ 7000 series processor.
+* Stars may intermittently fail to appear while playing Crysis Remastered.
+* Certain textures may become invisible while playing Final Fantasy X HD Remaster on Radeon™ RX 7000 series GPUs.
+* Intermittent corruption may be observed on the racetrack while playing EA Sports WRC.
+* Intermittent stutter while playing Overwatch 2 on some AMD Graphics Products, such as the Radeon™ RX 6900 XTX.
+
+## Known Issues
+
+* Audio may intermittently become out of sync with video when recording from AMD Software: Adrenalin Edition with AV1 codec.
+* Intermittent grey screen after driver upgrade with certain monitors (such as Nixeus NX-EDG274K) on Radeon™ RX 7000 series GPUs.
+* Performance drop may be observed in some light DirectML workloads.
+* Graphics API metric may show as N/A in certain UWP applications.
+* Intermittent flickering of certain ground textures may be observed while playing War Thunder with 4x SAAA enabled on some AMD Graphics Products, such as the Radeon™ RX 7900 XTX.
 
 ## SHA256 checksum:
 
- * whql-amd-software-adrenalin-edition-23.11.1-win10-win11-nov3-rdna.exe: 90dd57cedd68fbc3ef272a1228709514973185f3f0ed516c10c835bfe3f2a000
-* amd-software-adrenalin-edition-23.11.1-minimalsetup-231102\_web.exe: 493fda53120050f85836032324409be6c6484f90a0755ae0c6a673ba7626818b
+ * amd-software-adrenalin-edition-23.12.1-minimalsetup-231205\_web.exe: 6e2259cdc509d57cd2d5d20329ad46b5dcfdf139594bb8583be6f0e192f5bb86
+* whql-amd-software-adrenalin-edition-23.12.1-win10-win11-dec5-rdna.exe: 7828fdb5a16c93a1863fc4126d630203395a1c453fdf64621b2c3ead76daddd5
 
