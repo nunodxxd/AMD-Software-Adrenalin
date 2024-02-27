@@ -1,1 +1,1 @@
-https://drivers.amd.com/drivers/installer/23.40/whql/amd-software-adrenalin-edition-24.1.1-combined-minimalsetup-240122_web.exe
+https://drivers.amd.com/drivers/installer/23.40/whql/amd-software-adrenalin-edition-24.2.1-combined-minimalsetup-240223_web.exe
