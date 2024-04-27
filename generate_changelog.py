@@ -10,7 +10,7 @@ html = requests.get(f'https://www.amd.com/en/support/kb/release-notes/rn-rad-win
 
 soup = BeautifulSoup(html, 'html.parser')
 
-selected_inner_html = soup.select_one('div.center-container > div > div.cmp-container__content  > div > div > [data-cmp-data-layer]').decode_contents()
+selected_html = soup.select_one('div.center-container > div > div.cmp-container__content > div > div[data-cmp-data-layer]').decode_contents()
 
 """
 for x in range(1,7):
