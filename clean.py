@@ -5,7 +5,7 @@ headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36
 html = requests.get('https://www.amd.com/en/support/graphics/amd-radeon-5700-series/amd-radeon-rx-5700-series/amd-radeon-rx-5700-xt',headers=headers).content
 
 # old method 
-a = soup.select('.container > div > div:nth-child(4) > div > a')[0]
+a = soup.find_all('.container > div > div:nth-child(4) > div > a')[0]
 link = a.get('href')
 # print(link)
 
