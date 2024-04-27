@@ -10,7 +10,7 @@ html = requests.get(f'https://www.amd.com/en/support/kb/release-notes/rn-rad-win
 
 soup = BeautifulSoup(html, 'html.parser')
 
-selected_html = soup.select_one('div.center-container > div > div.cmp-container__content > div > div:nth-child(1) > div[data-cmp-data-layer]').decode_contents()
+selected_html = soup.select_one('div.center-container > div > div.cmp-container__content > div > div:nth-child(1) > div[data-cmp-data-layer]').prettify()
 
 #hash generator
 exe_files = [f for f in os.listdir('./driver') if f.endswith('.exe')]
