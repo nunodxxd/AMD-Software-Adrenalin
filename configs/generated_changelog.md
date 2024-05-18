@@ -5,81 +5,71 @@
 * ### New Game Support
 
 
-	+ Manor Lords
-
-
-* ### Performance Highlights
-
-
-	+ Performance improvements for HELLDIVERS™ 2
+	+ Ghost of Tsushima DIRECTOR'S CUT
+	+ Senua’s Saga: Hellblade II
+	+ F1® 24
 * ### Expanded HYPR-Tune Support
 
 
-	+ Nightingale
-	+ SKULL AND BONES™
+	+ Ghost of Tsushima DIRECTOR'S CUT
+	+ Horizon Forbidden West™ Complete Edition
+	+ Starfield
+	+ The Last of Us™ Part I
+	+ Click [HERE](https://www.amd.com/en/products/software/adrenalin/hypr-rx.html) for more information regarding HYPR-RX.
+		- Enable HYPR-RX and get an instant boost in performance of up to 136% on the Radeon™ RX 7600XT GPU across games like Baldur's Gate 3, F1 23, Resident Evil 4 and more! RS-643
+		- Enable HYPR-RX and get an instant boost in performance of up to 86% on the Ryzen™ 8700G APU across games like Baldur's Gate 3, F1 23, Resident Evil 4 and more! RS-64
+		- Join the conversation by sharing how well HYPR-RX with AFMF is working on your system. This information across thousands of games helps us make further improvements.
+  
+* ### AI on AMD
 
 
-* ### Expanded Vulkan Extensions Support
+	+ The latest version of AMD Software: Adrenalin Edition ensures optimal support and performance, providing the most refined enhancements and optimizations for the best user experience.
+	+ AMD Software can power AI functionality included with leading ISV applications. Content Creators can rely on AMD Software to accelerate AI-enhanced features in many content creation apps, including Adobe® Creative Cloud, Blender®, DaVinci Resolve, Topaz Photo & Video AI and many more.  Click [HERE](https://www.amd.com/en/products/graphics/radeon-ai.html) for more information
+* ### AI Development on Radeon
 
 
-	+ [VK\_KHR\_shader\_maximal\_reconvergence](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VK_KHR_shader_maximal_reconvergence.html "https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VK_KHR_shader_maximal_reconvergence.html")
-	+ [VK\_KHR\_dynamic\_rendering\_local\_read](https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VK_KHR_dynamic_rendering_local_read.html "https://www.khronos.org/registry/vulkan/specs/1.2-extensions/man/html/VK_KHR_dynamic_rendering_local_read.html")
-	+ Click [HERE](/en/resources/support-articles/release-notes/RN-RAD-WIN-VULKAN.html) for more information about other Vulkan® extension support.
+	+ AMD Software enables lower-level AI functionality with popular frameworks like PyTorch and ONNX Runtime on Linux®, enabling developers, enthusiasts and researchers to work with AI on select Radeon 7000 series desktop GPUs. Click [HERE](https://rocm.docs.amd.com/projects/radeon/en/latest/index.html) for more information.
+* ### Fixed Issues and Improvements
 
 
-* ### AI Application Update
-
-
-	+ Support and optimizations for 7.1.0 & 7.1.1 versions of Topaz Gigapixel AI application with new “Recovery” and “Low Resolution” AI upscaling features.
-
-
- 
-
-
-## Fixed Issues
-
-
-* Performance improvements for HELLDIVERS™ 2.
-* Intermittent application crash may be observed while playing Lords of the Fallen and entering certain areas on Radeon™ RX 6000 series graphics products.
-* Artifacts may appear in certain mud environments while playing SnowRunner on some AMD Graphics Products, such as the Radeon™ RX 6800.
-* Rainbow-like artifacts may appear in water environments while playing Horizon Forbidden West™ Complete Edition on Radeon™ RX 6000 series graphics products.
-* Intermittent application crash or driver timeout may be observed while playing Overwatch® 2 with Radeon™ Boost enabled on Radeon™ RX 6000 and above series graphics products.
-* Intermittent application freeze when first launching SteamVR using the Quest Link feature on Meta Quest 2.
-* Intermittent system or application crash when screen sharing using Microsoft Teams.
-* Intermittent application crash changing Anti-Aliasing settings while playing Enshrouded on Radeon™ 7000 series graphics products.
-* Display colors may appear “dim” or “washed out” after closing Enshrouded with Auto HDR enabled.
+	+ Intermittent application crash or driver timeout may be observed while playing World of Warcraft® or World of Warcraft® Classic on RDNA™ 3 series graphics products.
+	+ Intermittent application crash or driver timeout may be observed while playing Overwatch® 2 on Radeon™ RX 5000 series graphics products.
+	+ Intermittent stutter immediately after alt-tab with Performance Metrics Overlay enabled.
+	+ Texture flicking may be observed while playing Hitman: Contracts.
+	+ Corruption around certain water elements may be observed while playing Alan Wake 2 with Radeon™ Boost enabled.
 
 
 ## Known Issues
 
 
+* Fallout 3 and Fallout: New Vegas may fail to launch.[Hotfix pending verification]
 * Black corruption may be observed while playing Alien Isolation on Radeon™ 7000 series graphics products.
-* Corruption may be observed while playing Dying Light 2 Stay Human: Reloaded Edition or Alan Wake 2 with Radeon™ Boost enabled. Users experiencing this issue are recommended to disable Radeon™ Boost as a temporary workaround.
+* Corruption may be observed while playing Dying Light 2 Stay Human: Reloaded Edition with Radeon™ Boost enabled. Users experiencing this issue are recommended to disable Radeon™ Boost as a temporary workaround.
+* Intermittent in-game corruption may be observed while playing Ghost of Tsushima DIRECTOR'S CUT with AMD Software: Adrenalin Edition™ Record & Streaming and HDR enabled.
 * Max Payne 1 and 2 may fail to launch on RDNA 3 series graphics products when Anti-Aliasing is enabled.
-* Texture flicking may be observed while playing Hitman: Contracts.[Resolution targeted for 24.5.1]
-* Intermittent stutter immediately after alt-tab with Performance Metrics Overlay enabled. [Resolution targeted for 24.5.1]
+* AMD Software: Adrenalin Edition Performance Metrics may intermittently fail to update while playing HELLDIVERS™ 2.[Resolution targeted for 24.6.1]
 * Audio and video may intermittently become out of sync while recording using the AV1 codec in AMD Software: Adrenalin Edition. [Resolution targeted for Q3]
 
 
 ## Package Contents
 
 
-AMD Software: Adrenalin Edition 24.4.1 Driver Version 23.40.31.05 for Windows® 10 and Windows® 11 (Windows Driver Store Version 31.0.24031.5001).
+AMD Software: Adrenalin Edition 24.5.1 Driver Version 23.40.33.01 for Windows® 10 and Windows® 11 (Windows Driver Store Version 31.0.24033.1003).
 
 
-## The AMD Software: Adrenalin Edition 24.4.1 installation package can be downloaded from the following link:
+## The AMD Software: Adrenalin Edition 24.5.1 installation package can be downloaded from the following link:
 
 
 By clicking the Download button, you are confirming that you have read and agreed to be bound by the terms and conditions of the [End User License Agreement](/en/resources/support-articles/amd-software-eula.html) (“EULA”).  If you do not agree to the terms and conditions of these licenses, you do not have a license to any of the AMD software provided by this download.
 
 
-* [AMD Software: Adrenalin Edition 24.4.1 Driver for Windows® 10 & Windows® 11 64-bit](https://drivers.amd.com/drivers/whql-amd-software-adrenalin-edition-24.4.1-win10-win11-apr25-rdna.exe)
+* [AMD Software: Adrenalin Edition 24.5.1 Driver for Windows® 10 & Windows® 11 64-bit](https://drivers.amd.com/drivers/whql-amd-software-adrenalin-edition-24.5.1-win10-win11-may15-rdna.exe)
 
 
 Systems pairing RDNA series graphics products with Polaris or Vega series graphics products:
 
 
-* [AMD Software: Adrenalin Edition 24.4.1 Driver Including Vega and Polaris Series Graphics Support for Windows® 10 & Windows® 11 64-bit](https://drivers.amd.com/drivers/whql-amd-software-adrenalin-edition-24.4.1-win10-win11-apr25-rdna-combined.exe)
+* [AMD Software: Adrenalin Edition 24.5.1 Driver Including Vega and Polaris Series Graphics Support for Windows® 10 & Windows® 11 64-bit](https://drivers.amd.com/drivers/whql-amd-software-adrenalin-edition-24.5.1-win10-win11-may15-rdna-combined.exe)
 
 
 ## Installing AMD Software: Adrenalin Edition
@@ -92,13 +82,13 @@ For detailed instructions on how to correctly uninstall or install AMD Software:
 * [How-To Install AMD Software on a Windows® Based System](/en/resources/support-articles/faqs/RSX2-INSTALL.html)
 
 
-**NOTE**: This driver is not intended for use on AMD Radeon products running in Apple Boot Camp platforms. Users of these platforms should contact their system manufacturer for driver support. When installing AMD Software: Adrenalin Edition 24.4.1 for the Windows® operating system, the user must be logged on as Administrator, or have Administrator rights to complete the installation of AMD Software: Adrenalin Edition 24.4.1. 
+**NOTE**: This driver is not intended for use on AMD Radeon products running in Apple Boot Camp platforms. Users of these platforms should contact their system manufacturer for driver support. When installing AMD Software: Adrenalin Edition 24.5.1 for the Windows® operating system, the user must be logged on as Administrator, or have Administrator rights to complete the installation of AMD Software: Adrenalin Edition 24.5.1. 
 
 
 ## Radeon Product Compatibility
 
 
-AMD Software: Adrenalin Edition 24.4.1 is compatible with the following AMD Radeon products.
+AMD Software: Adrenalin Edition 24.5.1 is compatible with the following AMD Radeon products.
 
 
 
@@ -112,7 +102,7 @@ AMD Software: Adrenalin Edition 24.4.1 is compatible with the following AMD Rade
 ## Mobility Radeon™ Product Compatibility
 
 
-AMD Software: Adrenalin Edition 24.4.1 is a notebook reference graphics driver with limited support for system vendor specific features. 
+AMD Software: Adrenalin Edition 24.5.1 is a notebook reference graphics driver with limited support for system vendor specific features. 
 
 
 
@@ -157,7 +147,7 @@ AMD Software: Adrenalin Edition does not include support for handheld gaming dev
 ## Compatible Operating Systems
 
 
-AMD Software: Adrenalin Edition 24.4.1 is designed to support the following Microsoft® Windows® platforms. Operating System support may vary depending on your specific AMD Radeon product.
+AMD Software: Adrenalin Edition 24.5.1 is designed to support the following Microsoft® Windows® platforms. Operating System support may vary depending on your specific AMD Radeon product.
 
 
 * Windows 11 version 21H2 and later
@@ -175,8 +165,17 @@ AMD Software: Adrenalin Edition 24.4.1 is designed to support the following Micr
 | WHQL Microsoft Certification | Passed |
 
 
+## Footnotes
+
+
+RS-643 - Testing conducted by AMD as of March 27, 2024, on a test system configured with a Ryzen 7 7800X3D CPU, 32GB DDR5, Radeon RX 7600XT GPU, MSI x670E ACE motherboard, and Windows 11 Pro, with AMD Software: Adrenalin Edition 24.2.1 and AMD HYPR-RX ON/OFF, on various titles including Alan Wake 2, Baldur’s Gate 3, The Callisto Protocol, F1 23, Far Cry 6, Horizon Zero Dawn, Microsoft Flight Simulator, Red Dead Redemption 2, Resident Evil 4, Tiny Tina’s Wonderlands.  Game tested at 1080p resolution. Performance may vary. System manufacturers may vary configurations, yielding different results.
+
+
+RS-645 - Testing conducted by AMD as of March 27, 2024, on a test system configured with a Ryzen 8700G APU and Windows 11 Pro, with AMD Software: Adrenalin Edition 24.2.1 and AMD HYPR-RX ON/OFF, on various titles including Alan Wake 2, Baldur’s Gate 3, The Callisto Protocol, F1 23, Far Cry 6, Horizon Zero Dawn, Microsoft Flight Simulator, Red Dead Redemption 2, Resident Evil 4, Tiny Tina’s Wonderlands.  Game tested at 1080p resolution. Performance may vary. System manufacturers may vary configurations, yielding different results.
+
+
 ## SHA256 checksum:
 
- * amd-software-adrenalin-edition-24.4.1-minimalsetup-240423\_web.exe: 1b992a1c582d91cb4cf9f79d482dde2d2f04290f6826e82d76a12a9a9c61bca3
-* whql-amd-software-adrenalin-edition-24.4.1-win10-win11-apr25-rdna.exe: 7bc7b13936bbff1b674366d13e3263b7874914a5110d1d976697b352edcf73aa
+ * whql-amd-software-adrenalin-edition-24.5.1-win10-win11-may15-rdna.exe: e33bf86dc1fa070b3ccf6eb4dfa812be1b6ac1d2fac9d49fcf720a873d997c6a
+* amd-software-adrenalin-edition-24.5.1-minimalsetup-240514\_web.exe: 7bef645ef38227df5ceec2ea4cf7903f9eb8e3266bc15885a8b03207eaf35aee
 
