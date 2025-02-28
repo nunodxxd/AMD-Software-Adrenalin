@@ -1,0 +1,83 @@
+name: Scrape optional data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * *'
+
+env:
+  GITHUB_TOKEN: ${{ secrets.PAT_AMD }}
+
+jobs:
+  scheduled:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out this repo
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.PAT_AMD }}
+
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.9
+
+    - name: Install deps
+      run: >-
+          python -m pip install --upgrade pip &&
+          pip install beautifulsoup4 && pip install requests && pip install markdownify
+
+    - name: Check for AMD optional new versions
+      run: |-
+        echo "old_link_optional=$(cat configs/link_optional.txt 2>/dev/null || echo '')" >> $GITHUB_ENV
+        python clean_optional.py > configs/link_optional.txt
+        echo "link_optional=$(cat configs/link_optional.txt)" >> $GITHUB_ENV        
+
+    - name: Create Version
+      if: env.link_optional != env.old_link_optional
+      run: |-
+        version=$(echo "${{ env.link_optional }}" | grep -oP '(version=)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" | tr  "."  "-")
+        echo "version=$version" >> $GITHUB_ENV   
+
+    - name: Create beta tag
+      if: env.link_optional != env.old_link_optional
+      run: |-
+        beta_tag="${{ env.version }}-beta"
+        echo "beta_tag=$beta_tag" >> $GITHUB_ENV
+
+    - name: Check if Beta Release already exists
+      if: env.link_optional != env.old_link_optional
+      run: |-
+        if gh release list --json tagName --jq '.[] | select(.tagName=="${{ env.beta_tag }}")' | grep -q .; then
+          echo "Beta release já existe. Saindo..."
+          exit 1
+        fi
+
+    - name: Save optional setup
+      run:  |-
+        curl --create-dirs -O --output-dir "driver" '${{ env.link_optional }}' -K configs/headers.txt --compressed
+
+    - name: Generate new changelog for beta
+      run: |-
+        python generate_changelog.py ${{ env.version }} > configs/generated_changelog_optional.md
+
+    - name: Create new Beta Release
+      run: |-
+        gh release create ${{ env.beta_tag }} \
+          -t "${{ env.beta_tag }}" \
+          -F configs/generated_changelog_optional.md \
+          --prerelease
+          
+        gh release upload ${{ env.beta_tag }} ./driver/*.exe
+
+    - name: Remove driver folder
+      run: rm -rf ./driver    
+
+    - name: Commit report
+      run: |-
+        git config user.name "Automated"
+        git config user.email "actions@users.noreply.github.com"
+        git add -A
+        git commit -m "Latest beta data" || exit 0
+        git push origin main
