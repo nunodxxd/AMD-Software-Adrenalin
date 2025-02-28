@@ -67,7 +67,7 @@ jobs:
         gh release create ${{ env.beta_tag }} \
           -t "${{ env.beta_tag }}" \
           -F configs/generated_changelog_optional.md \
-          --prerelease --draft
+          --prerelease
           
         gh release upload ${{ env.beta_tag }} ./driver/*.exe
 
