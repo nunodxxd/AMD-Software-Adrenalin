@@ -42,24 +42,28 @@ jobs:
     - name: Check if Beta Release already exists
       run: |-
         if gh release list --json tagName --jq '.[] | select(.tagName=="${{ env.beta_tag }}")' | grep -q .; then
-          echo "Beta release já existe. Saindo..."
-          exit 0
+          echo "Beta release already exist. ignoring..."
+          echo "SKIP=true" >> "$GITHUB_ENV"
         fi
         
     - name: Create Version
+      if: env.SKIP != 'true'
       run: |-
         version=$(echo "${{ env.link_optional }}" | grep -oP '(version=)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" | tr  "."  "-")
         echo "version=$version" >> $GITHUB_ENV 
 
     - name: Save optional setup
+      if: env.SKIP != 'true'
       run:  |-
         curl --create-dirs -O --output-dir "driver" '${{ env.link_optional }}' -K configs/headers.txt --compressed
 
     - name: Generate new changelog for beta
+      if: env.SKIP != 'true'
       run: |-
         python generate_changelog.py ${{ env.version }} > configs/generated_changelog_optional.md
 
     - name: Create new Beta Release
+      if: env.SKIP != 'true'
       run: |-
         gh release create ${{ env.beta_tag }} \
           -t "${{ env.beta_tag }}" \
@@ -69,9 +73,11 @@ jobs:
         gh release upload ${{ env.beta_tag }} ./driver/*.exe
 
     - name: Remove driver folder
+      if: env.SKIP != 'true'
       run: rm -rf ./driver    
 
     - name: Commit report
+      if: env.SKIP != 'true'
       run: |-
         git config user.name "Automated"
         git config user.email "actions@users.noreply.github.com"
