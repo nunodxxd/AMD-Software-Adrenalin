@@ -50,6 +50,7 @@ jobs:
         python clean_full.py ${{env.version}} > configs/link_full.txt
         echo "link_full=$(cat configs/link_full.txt)" >> $GITHUB_ENV
     - name: Clear link_full_combined.txt
+      if: env.link != env.old_link && env.tag != env.latest_tag
       run: echo "" > configs/link_full_combined.txt
     - name: Fetch link for full setup combined(Polaris/Vega + RDNA)
       if: env.link != env.old_link && env.tag != env.latest_tag
