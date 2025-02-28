@@ -32,27 +32,24 @@ jobs:
       run: |-
         echo "old_link_optional=$(cat configs/link_optional.txt 2>/dev/null || echo '')" >> $GITHUB_ENV
         python clean_optional.py > configs/link_optional.txt
-        echo "link_optional=$(cat configs/link_optional.txt)" >> $GITHUB_ENV        
-
-    - name: Create Version
-      if: env.link_optional != env.old_link_optional
+        echo "link_optional=$(cat configs/link_optional.txt)" >> $GITHUB_ENV      
+        
+    - name: Create beta tag based on link scraped
       run: |-
-        version=$(echo "${{ env.link_optional }}" | grep -oP '(version=)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" | tr  "."  "-")
-        echo "version=$version" >> $GITHUB_ENV   
-
-    - name: Create beta tag
-      if: env.link_optional != env.old_link_optional
-      run: |-
-        beta_tag="${{ env.version }}-beta"
+        beta_tag=$(echo "${{ env.link_optional }}" | grep -oP '\d+\.\d+\.\d+')-beta
         echo "beta_tag=$beta_tag" >> $GITHUB_ENV
-
+    
     - name: Check if Beta Release already exists
-      if: env.link_optional != env.old_link_optional
       run: |-
         if gh release list --json tagName --jq '.[] | select(.tagName=="${{ env.beta_tag }}")' | grep -q .; then
           echo "Beta release já existe. Saindo..."
-          exit 1
+          exit 0
         fi
+        
+    - name: Create Version
+      run: |-
+        version=$(echo "${{ env.link_optional }}" | grep -oP '(version=)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" | tr  "."  "-")
+        echo "version=$version" >> $GITHUB_ENV 
 
     - name: Save optional setup
       run:  |-
