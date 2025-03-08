@@ -34,7 +34,9 @@ jobs:
         python clean_optional.py > configs/link_optional.txt
         echo "link_optional=$(cat configs/link_optional.txt)" >> $GITHUB_ENV 
 
-        if [[ "${{ env.link_optional }}" == "Download link not found" ]]; then
+    - name: Validate AMD optional new versions
+      run: |-
+        if [[ "${{ env.link_optional }}" == "Download link not found" || -z "${{ env.link_optional }}" ]]; then
           echo "No new optional version found or link not found. Stopping workflow."
           echo "SKIP=true" >> $GITHUB_ENV
           exit 0
