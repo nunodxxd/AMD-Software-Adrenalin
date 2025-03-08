@@ -32,20 +32,28 @@ jobs:
       run: |-
         echo "old_link_optional=$(cat configs/link_optional.txt 2>/dev/null || echo '')" >> $GITHUB_ENV
         python clean_optional.py > configs/link_optional.txt
-        echo "link_optional=$(cat configs/link_optional.txt)" >> $GITHUB_ENV      
+        echo "link_optional=$(cat configs/link_optional.txt)" >> $GITHUB_ENV 
+
+        if [[ "${{ env.link_optional }}" == "Download link not found" ]]; then
+          echo "No new optional version found or link not found. Stopping workflow."
+          echo "SKIP=true" >> $GITHUB_ENV
+          exit 0
+        fi
         
     - name: Create beta tag based on link scraped
+      if: env.SKIP != 'true'
       run: |-
         beta_tag=$(echo "${{ env.link_optional }}" | grep -oP '\d+\.\d+\.\d+')-beta
         echo "beta_tag=$beta_tag" >> $GITHUB_ENV
     
     - name: Check if Beta Release already exists
+      if: env.SKIP != 'true'
       run: |-
         if gh release list --json tagName --jq '.[] | select(.tagName=="${{ env.beta_tag }}")' | grep -q .; then
           echo "Beta release already exist. ignoring..."
           echo "SKIP=true" >> "$GITHUB_ENV"
         fi
-        
+      
     - name: Create Version
       if: env.SKIP != 'true'
       run: |-
