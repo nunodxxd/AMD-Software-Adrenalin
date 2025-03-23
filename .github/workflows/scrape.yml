@@ -29,7 +29,17 @@ jobs:
       run: |-
         echo "old_link=$(cat configs/link.txt)" >> $GITHUB_ENV
         python clean.py > configs/link.txt
-        echo "link=$(cat configs/link.txt)" >> $GITHUB_ENV        
+        echo "link=$(cat configs/link.txt)" >> $GITHUB_ENV
+    - name: Debug Git Tags
+      run: |
+        echo "Listing all tags:"
+        git tag -l
+    
+        echo "Filtering only stable versions:"
+        git tag -l "[0-9]*.[0-9]*.[0-9]*"
+    
+        echo "Latest stable version (sorted):"
+        git tag -l "[0-9]*.[0-9]*.[0-9]*" | sort -V | tail -n 1         
     - name: create new tag based on link scraped
       if: env.link != env.old_link 
       run: |-
