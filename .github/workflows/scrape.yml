@@ -34,9 +34,20 @@ jobs:
       if: env.link != env.old_link 
       run: |-
         echo "tag=${{ env.link }}" | grep -oP '(tag=)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" >> $GITHUB_ENV
-    - name: Extract version from latest tag on repo
-      if: env.link != env.old_link 
-      uses: damienaicheh/extract-version-from-tag-action@v1.0.0
+        - name: Extract stable version
+        id: extract_stable
+        run: |
+          # List only tags that follow the "major.minor.patch" pattern
+          tag=$(git tag -l "[0-9]*.[0-9]*.[0-9]*" | sort -V | tail -n 1)
+          echo "Found version: $tag"
+          echo "TAG=$tag" >> $GITHUB_ENV
+      
+          # Optionally, extract the version components if needed
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$tag"
+          echo "MAJOR=$MAJOR" >> $GITHUB_ENV
+          echo "MINOR=$MINOR" >> $GITHUB_ENV
+          echo "PATCH=$PATCH" >> $GITHUB_ENV
+      
     - name: Create lastest:tag
       if: env.link != env.old_link 
       run: echo "latest_tag=${{env.MAJOR}}.${{env.MINOR}}.${{env.PATCH}}" >> $GITHUB_ENV
