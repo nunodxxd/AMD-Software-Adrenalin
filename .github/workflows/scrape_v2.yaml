@@ -1,6 +1,9 @@
 name: Scrape latest data
 
 on:
+  push:
+    branches:
+      - dev
   workflow_dispatch:
   schedule:
     - cron: '0 1 * * *'
@@ -49,7 +52,7 @@ jobs:
       run: python amd_driver_scraper.py --type stable --download
 
     - name: Create new Release
-      if: steps.check_drivers.outputs.version && env.SKIP != 'true'
+      if: github.ref != 'refs/heads/dev' && steps.check_drivers.outputs.version && env.SKIP != 'true'
       run: |-
         gh release create ${{ steps.check_drivers.outputs.tag }} \
           -t ${{ steps.check_drivers.outputs.tag }} \
@@ -64,7 +67,7 @@ jobs:
         rm -f ${{ steps.download_drivers.outputs.changelog }}
 
     - name: Commit report
-      if: steps.check_drivers.outputs.version && env.SKIP != 'true'
+      if: github.ref != 'refs/heads/dev' && steps.check_drivers.outputs.version && env.SKIP != 'true'
       run: |-
         git config user.name "Automated"
         git config user.email "actions@users.noreply.github.com"
