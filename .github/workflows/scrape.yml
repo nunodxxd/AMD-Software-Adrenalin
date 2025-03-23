@@ -29,23 +29,24 @@ jobs:
       run: |-
         echo "old_link=$(cat configs/link.txt)" >> $GITHUB_ENV
         python clean.py > configs/link.txt
-        echo "link=$(cat configs/link.txt)" >> $GITHUB_ENV  
+        echo "link=$(cat configs/link.txt)" >> $GITHUB_ENV
+    - name: create new tag based on link scraped
+      if: env.link != env.old_link 
+      run: |-
+        echo "tag=${{ env.link }}" | grep -oP '(tag=)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" >> $GITHUB_ENV
     - name: Extract latest stable version
       run: |
         echo "Filtering only stable versions (ignoring pre-releases):"
         tag=$(git tag -l | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1)
         
         echo "Latest stable version: $tag"
-        echo "TAG=$tag" >> $GITHUB_ENV
+        echo "latest_tag=$tag" >> $GITHUB_ENV
     
         # Extract version components
         IFS='.' read -r MAJOR MINOR PATCH <<< "$tag"
         echo "MAJOR=$MAJOR" >> $GITHUB_ENV
         echo "MINOR=$MINOR" >> $GITHUB_ENV
         echo "PATCH=$PATCH" >> $GITHUB_ENV      
-    - name: Create lastest:tag
-      if: env.link != env.old_link 
-      run: echo "latest_tag=${{env.MAJOR}}.${{env.MINOR}}.${{env.PATCH}}" >> $GITHUB_ENV
     - name: Prepare link for curl
       if: env.link != env.old_link && env.tag != env.latest_tag
       run: |-
