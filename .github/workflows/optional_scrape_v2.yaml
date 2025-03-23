@@ -1,9 +1,9 @@
-name: Scrape optional data
+name: Scrape optional data v2
 
 on:
   push:
     branches:
-      - dev
+      - dev/scraper-v2
   workflow_dispatch:
   schedule:
     - cron: '0 2 * * *'

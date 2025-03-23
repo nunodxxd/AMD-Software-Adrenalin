@@ -1,9 +1,6 @@
-name: Scrape latest data
+name: Scrape latest data v2
 
 on:
-  push:
-    branches:
-      - dev/scraper-v2
   workflow_dispatch:
   schedule:
     - cron: '0 1 * * *'
@@ -47,7 +44,7 @@ jobs:
         echo "No existing release found. Will proceed with download."
 
     - name: Download drivers and create changelog
-      #if: steps.check_drivers.outputs.version && env.SKIP != 'true'
+      if: steps.check_drivers.outputs.version && env.SKIP != 'true'
       id: download_drivers
       run: python amd_driver_scraper.py --type stable --download
 
