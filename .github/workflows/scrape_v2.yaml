@@ -3,7 +3,7 @@ name: Scrape latest data
 on:
   push:
     branches:
-      - dev
+      - dev/scraper-v2
   workflow_dispatch:
   schedule:
     - cron: '0 1 * * *'
