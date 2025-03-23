@@ -47,7 +47,7 @@ jobs:
         echo "No existing beta release found. Will proceed with download."
 
     - name: Download optional drivers and create changelog
-      if: steps.check_optional.outputs.version && env.SKIP != 'true'
+      #if: steps.check_optional.outputs.version && env.SKIP != 'true'
       id: download_optional
       run: python amd_driver_scraper.py --type optional --download
 
