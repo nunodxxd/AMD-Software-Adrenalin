@@ -1,0 +1,30 @@
+{
+  "headers": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 Edg/107.0.1418.52",
+    "Upgrade-Insecure-Requests": "1",
+    "DNT": "1",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.5",
+    "Accept-Encoding": "gzip, deflate",
+    "Connection": "keep-alive",
+    "Referer": "https://www.amd.com/",
+    "Sec-Fetch-Dest": "document",
+    "Sec-Fetch-Mode": "navigate",
+    "Sec-Fetch-Site": "same-site",
+    "Sec-Fetch-User": "?1",
+    "sec-ch-ua": "Microsoft Edge;v=107,Chromium;v=107,Not=A?Brand;v=24",
+    "sec-ch-ua-mobile": "?0",
+    "sec-ch-ua-platform": "Windows"
+  },
+  "urls": {
+    "stable_driver": "https://www.amd.com/en/support/downloads/drivers.html/graphics/radeon-rx/radeon-rx-7000-series/amd-radeon-rx-7900-xt.html",
+    "optional_driver": "https://www.amd.com/en/support/downloads/drivers.html/graphics/radeon-rx/radeon-rx-7000-series/amd-radeon-rx-7900-xt.html",
+    "release_notes_template": "https://www.amd.com/en/resources/support-articles/release-notes/RN-RAD-WIN-{}.html"
+  },
+  "driver_links": {
+    "stable": "https://drivers.amd.com/drivers/installer/24.30/whql/amd-software-adrenalin-edition-25.3.1-minimalsetup-250312_web.exe",
+    "stable_full": "https://drivers.amd.com/drivers/whql-amd-software-adrenalin-edition-25.3.1-win10-win11-march-rdna.exe",
+    "stable_full_combined": "https://drivers.amd.com/drivers/whql-amd-software-adrenalin-edition-25.3.1-win10-win11-march-rdna-combined.exe",
+    "optional": "https://drivers.amd.com/drivers/amd-software-adrenalin-edition-25.3.2-win10-win11-mar20-rdna.exe"
+  }
+}

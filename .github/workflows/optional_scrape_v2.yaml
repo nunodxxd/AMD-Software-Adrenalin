@@ -1,0 +1,74 @@
+name: Scrape optional data v2
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * *'
+
+env:
+  GITHUB_TOKEN: ${{ secrets.PAT_AMD }}
+
+jobs:
+  scheduled:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out this repo
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.PAT_AMD }}
+
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.9
+
+    - name: Install deps
+      run: >-
+          python -m pip install --upgrade pip &&
+          pip install beautifulsoup4 requests markdownify
+
+    - name: Check for AMD optional new versions
+      id: check_optional
+      run: python amd_driver_scraper.py --type optional --check-only
+
+    - name: Check if Beta Release already exists
+      if: steps.check_optional.outputs.version
+      run: |-
+        echo "Checking if version ${{ steps.check_optional.outputs.beta_tag }} already exists..."
+        if gh release list --json tagName --jq '.[] | select(.tagName=="${{ steps.check_optional.outputs.beta_tag }}")' | grep -q .; then
+          echo "Beta release already exists. Skipping."
+          echo "SKIP=true" >> "$GITHUB_ENV"
+          exit 0
+        fi
+        echo "No existing beta release found. Will proceed with download."
+
+    - name: Download optional drivers and create changelog
+      if: steps.check_optional.outputs.version && env.SKIP != 'true'
+      id: download_optional
+      run: python amd_driver_scraper.py --type optional --download
+
+    - name: Create new Beta Release
+      if: github.ref != 'refs/heads/dev' && steps.check_optional.outputs.version && env.SKIP != 'true'
+      run: |-
+        gh release create ${{ steps.check_optional.outputs.beta_tag }} \
+          -t "${{ steps.check_optional.outputs.beta_tag }}" \
+          -F ${{ steps.download_optional.outputs.changelog }} \
+          --prerelease
+          
+        gh release upload ${{ steps.check_optional.outputs.beta_tag }} ./driver/*.exe
+
+    - name: Remove driver folder and changelog
+      if: steps.check_optional.outputs.version && env.SKIP != 'true'
+      run: |
+        rm -rf ./driver
+        rm -f ${{ steps.download_optional.outputs.changelog }}
+
+    - name: Commit report
+      if: github.ref != 'refs/heads/dev' && steps.check_optional.outputs.version && env.SKIP != 'true'
+      run: |-
+        git config user.name "Automated"
+        git config user.email "actions@users.noreply.github.com"
+        git add -A
+        git commit -m "Latest beta data" || exit 0
+        git push origin main
