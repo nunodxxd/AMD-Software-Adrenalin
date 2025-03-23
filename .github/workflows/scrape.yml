@@ -35,6 +35,7 @@ jobs:
       run: |-
         echo "tag=${{ env.link }}" | grep -oP '(tag=)|(\d\d\.\d\d?\.\d\d?)' | tr -d "\n" >> $GITHUB_ENV
     - name: Extract latest stable version
+      if: env.link != env.old_link 
       run: |
         echo "Filtering only stable versions (ignoring pre-releases):"
         tag=$(git tag -l | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' | sort -V | tail -n 1)
