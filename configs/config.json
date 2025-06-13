@@ -25,6 +25,6 @@
     "stable": "https://drivers.amd.com/drivers/installer/25.10/whql/amd-software-adrenalin-edition-25.6.1-minimalsetup-250602_web.exe",
     "stable_full": "https://drivers.amd.com/drivers/whql-amd-software-adrenalin-edition-25.6.1-win10-win11-june5-rdna.exe",
     "stable_full_combined": "https://drivers.amd.com/drivers/whql-amd-software-adrenalin-edition-25.5.1-win10-win11-may8-vega-polaris.exe",
-    "optional": "https://drivers.amd.com/drivers/amd-software-adrenalin-edition-25.4.1-win10-win11-apr22-rdna.exe"
+    "optional": "https://drivers.amd.com/drivers/amd-software-adrenalin-edition-25.6.2-win10-win11-june-rdna.exe"
   }
 }
