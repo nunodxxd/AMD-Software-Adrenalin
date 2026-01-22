@@ -22,8 +22,8 @@
     "release_notes_template": "https://www.amd.com/en/resources/support-articles/release-notes/RN-RAD-WIN-{}.html"
   },
   "driver_links": {
-    "stable": "https://drivers.amd.com/drivers/installer/25.20/whql/amd-software-adrenalin-edition-25.12.1-minimalsetup-251207_web.exe",
-    "stable_full": "https://drivers.amd.com/drivers/whql-amd-software-adrenalin-edition-25.12.1-win11-c.exe",
+    "stable": "https://drivers.amd.com/drivers/installer/25.30/whql/amd-software-adrenalin-edition-26.1.1-minimalsetup-260119_web.exe",
+    "stable_full": "https://drivers.amd.com/drivers/whql-amd-software-adrenalin-edition-26.1.1-win11-c.exe",
     "stable_full_combined": "https://drivers.amd.com/drivers/whql-amd-software-adrenalin-edition-25.5.1-win10-win11-may8-vega-polaris.exe",
     "optional": "https://drivers.amd.com/drivers/amd-software-adrenalin-edition-25.9.2-win10-win11-sep-rdna.exe"
   }
