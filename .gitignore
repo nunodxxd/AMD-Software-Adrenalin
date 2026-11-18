@@ -1,0 +1,13 @@
+# Driver downloads and generated changelogs
+driver/
+configs/generated_changelog*.md
+
+# Python cache and virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+ENV/

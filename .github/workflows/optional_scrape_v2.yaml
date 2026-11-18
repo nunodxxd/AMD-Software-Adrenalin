@@ -5,6 +5,10 @@ on:
   schedule:
     - cron: '0 2 * * *'
 
+concurrency:
+  group: amd-driver-scraper
+  cancel-in-progress: false
+
 env:
   GITHUB_TOKEN: ${{ secrets.PAT_AMD }}
 
@@ -17,16 +21,18 @@ jobs:
       with:
         fetch-depth: 0
         token: ${{ secrets.PAT_AMD }}
-        
+
     - name: Set up Python
       uses: actions/setup-python@v7
       with:
         python-version: '3.13'
+        cache: 'pip'
+        cache-dependency-path: requirements.txt
 
     - name: Install deps
       run: >-
-          python -m pip install --upgrade pip &&
-          pip install beautifulsoup4 requests markdownify
+        python -m pip install --upgrade pip &&
+        pip install -r requirements.txt
 
     - name: Check for AMD optional new versions
       id: check_optional
@@ -36,8 +42,8 @@ jobs:
       if: steps.check_optional.outputs.version
       run: |-
         echo "Checking if version ${{ steps.check_optional.outputs.beta_tag }} already exists..."
-        if gh release list --json tagName --jq '.[] | select(.tagName=="${{ steps.check_optional.outputs.beta_tag }}")' | grep -q .; then
-          echo "Beta release already exists. Skipping."
+        if gh release view "${{ steps.check_optional.outputs.beta_tag }}" >/dev/null 2>&1; then
+          echo "Beta release already exists. Skipping download and release creation."
           echo "SKIP=true" >> "$GITHUB_ENV"
           exit 0
         fi
@@ -49,26 +55,28 @@ jobs:
       run: python amd_driver_scraper.py --type optional --download
 
     - name: Create new Beta Release
-      if: github.ref != 'refs/heads/dev' && steps.check_optional.outputs.version && env.SKIP != 'true'
+      if: "!startsWith(github.ref, 'refs/heads/dev') && steps.check_optional.outputs.version && env.SKIP != 'true'"
       run: |-
-        gh release create ${{ steps.check_optional.outputs.beta_tag }} \
+        gh release create "${{ steps.check_optional.outputs.beta_tag }}" \
+          ./driver/*.exe \
           -t "${{ steps.check_optional.outputs.beta_tag }}" \
-          -F ${{ steps.download_optional.outputs.changelog }} \
+          -F "${{ steps.download_optional.outputs.changelog }}" \
           --prerelease
-          
-        gh release upload ${{ steps.check_optional.outputs.beta_tag }} ./driver/*.exe
 
     - name: Remove driver folder and changelog
-      if: steps.check_optional.outputs.version && env.SKIP != 'true'
+      if: always() && steps.check_optional.outputs.version && env.SKIP != 'true'
       run: |
         rm -rf ./driver
-        rm -f ${{ steps.download_optional.outputs.changelog }}
+        rm -f "${{ steps.download_optional.outputs.changelog }}"
 
     - name: Commit report
-      if: github.ref != 'refs/heads/dev' && steps.check_optional.outputs.version && env.SKIP != 'true'
+      if: "!startsWith(github.ref, 'refs/heads/dev') && steps.check_optional.outputs.version"
       run: |-
         git config user.name "Automated"
         git config user.email "actions@users.noreply.github.com"
-        git add -A
-        git commit -m "Latest beta data" || exit 0
-        git push origin main
+        git add configs/config.json
+        if ! git diff --cached --quiet; then
+          git commit -m "Latest beta data"
+          git pull --rebase origin main
+          git push origin main
+        fi
