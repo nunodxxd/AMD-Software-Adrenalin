@@ -5,6 +5,10 @@ on:
   schedule:
     - cron: '0 1 * * *'
 
+concurrency:
+  group: amd-driver-scraper
+  cancel-in-progress: false
+
 env:
   GITHUB_TOKEN: ${{ secrets.PAT_AMD }}
 
@@ -22,11 +26,13 @@ jobs:
       uses: actions/setup-python@v7
       with:
         python-version: '3.13'
+        cache: 'pip'
+        cache-dependency-path: requirements.txt
 
     - name: Install deps
       run: >-
-          python -m pip install --upgrade pip &&
-          pip install beautifulsoup4 requests markdownify
+        python -m pip install --upgrade pip &&
+        pip install -r requirements.txt
 
     - name: Check for AMD new versions
       id: check_drivers
@@ -36,9 +42,9 @@ jobs:
       if: steps.check_drivers.outputs.version
       run: |
         echo "Checking if version ${{ steps.check_drivers.outputs.tag }} already exists..."
-        if gh release list --json tagName --jq '.[] | select(.tagName=="${{ steps.check_drivers.outputs.tag }}")' | grep -q .; then
-          echo "Release already exists. Skipping."
-          echo "SKIP=true" >> $GITHUB_ENV
+        if gh release view "${{ steps.check_drivers.outputs.tag }}" >/dev/null 2>&1; then
+          echo "Release already exists. Skipping download and release creation."
+          echo "SKIP=true" >> "$GITHUB_ENV"
           exit 0
         fi
         echo "No existing release found. Will proceed with download."
@@ -49,26 +55,28 @@ jobs:
       run: python amd_driver_scraper.py --type stable --download
 
     - name: Create new Release
-      if: github.ref != 'refs/heads/dev' && steps.check_drivers.outputs.version && env.SKIP != 'true'
+      if: "!startsWith(github.ref, 'refs/heads/dev') && steps.check_drivers.outputs.version && env.SKIP != 'true'"
       run: |-
-        gh release create ${{ steps.check_drivers.outputs.tag }} \
-          -t ${{ steps.check_drivers.outputs.tag }} \
-          -F ${{ steps.download_drivers.outputs.changelog }}
-        
-        gh release upload ${{ steps.check_drivers.outputs.tag }} ./driver/*.exe
+        gh release create "${{ steps.check_drivers.outputs.tag }}" \
+          ./driver/*.exe \
+          -t "${{ steps.check_drivers.outputs.tag }}" \
+          -F "${{ steps.download_drivers.outputs.changelog }}"
 
     - name: Remove driver folder and changelog
-      if: steps.check_drivers.outputs.version && env.SKIP != 'true'
+      if: always() && steps.check_drivers.outputs.version && env.SKIP != 'true'
       run: |
         rm -rf ./driver
-        rm -f ${{ steps.download_drivers.outputs.changelog }}
+        rm -f "${{ steps.download_drivers.outputs.changelog }}"
 
     - name: Commit report
-      if: github.ref != 'refs/heads/dev' && steps.check_drivers.outputs.version && env.SKIP != 'true'
+      if: "!startsWith(github.ref, 'refs/heads/dev') && steps.check_drivers.outputs.version"
       run: |-
         git config user.name "Automated"
         git config user.email "actions@users.noreply.github.com"
-        git add -A
-        timestamp=$(date -u)
-        git commit -m "Latest data: ${timestamp}" || exit 0
-        git push origin main
+        git add configs/config.json
+        if ! git diff --cached --quiet; then
+          timestamp=$(date -u)
+          git commit -m "Latest data: ${timestamp}"
+          git pull --rebase origin main
+          git push origin main
+        fi
